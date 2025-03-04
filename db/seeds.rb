@@ -12,6 +12,7 @@ require "faker"
 
 puts "cleaning database..."
 
+Booking.destroy_all
 Instrument.destroy_all
 User.destroy_all
 Category.destroy_all
@@ -56,3 +57,7 @@ puts 'creating loops'
   puts 'saving...'
   instrument.save!
 end
+
+puts 'creating bookings'
+Booking.create!(start_date: Date.new(2025,2,3), end_date: Date.new(2025,2,6), user: User.all.sample, instrument: Instrument.all.sample)
+Booking.create!(start_date: Date.new(2025,4,6), end_date: Date.new(2025,5,8), user: User.all.sample, instrument: Instrument.all.sample)
