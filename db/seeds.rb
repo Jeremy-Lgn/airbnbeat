@@ -21,8 +21,8 @@ models = [ "Yamaha FG800", "Fender Stratocaster", "Ibanez SR", "Roland Digital K
 titles = [ "Yamaha FG800 Acoustic Guitar Rental", "Fender Stratocaster Electric Guitar Rental", "Ibanez SR Bass Guitar Rental", "Roland Digital Keyboard Rental", "Pearl Drum Set Rental", "Stradivarius-Inspired Violin Rental", "Yamaha Alto Saxophone Rental", "Bach Stradivarius Trumpet Rental", "Handcrafted Cello Rental", "Buffet Crampon Clarinet Rental", "Aegean Mandolin Rental", "Deering Banjo Rental", "Casio Electric Piano Rental", "Korg Synthesizer Rental", "Complete Percussion Set Rental", "Pearl Flute Rental", "Hohner Diatonic Harmonica Rental", "Well-Tuned Viola Rental", "Sturdy Double Bass Rental", "Pioneer DJ Controller Rental" ]
 
 puts "creating users"
-User.create!(email: "toto@sfr.fr", password: "password")
-User.create!(email: "tito@sfr.en", password: "password")
+User.create!(email: "toto@sfr.fr", password: "password", name: "toto", address: "22 rue des capucins 69005 Lyon")
+User.create!(email: "tito@sfr.en", password: "password", name: "tata", address: "48 rue des capucines 69005 Lyon")
 
 
 puts "creating categories"
