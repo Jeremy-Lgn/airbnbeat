@@ -1,15 +1,17 @@
-<h1>Index</h1>
- <% instruments.each do |instrument| %>
-
-    <div class="card" style="width: 18rem;">
+  <div class="row g-4 p-5">
+<% instruments.each do |instrument| %>
+<div class="col-6 col-sm-4">
+    <div class="card" style="height: 100%;">
   <img class="card-img-top" src="<%= asset_path('ukulele.jpg') %>" alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title"><%= instrument.title %></h5>
-    <p class="card-text"><%= instrument.description %></p>
+    <p class="card-text"><%= instrument.user.address %></p>
+        <h3 class="card-title"><%= instrument.price_per_day %>€</h3>
     <%= link_to instrument_path(instrument) do%>
     <button>Click me</button>
     <% end %>
   </div>
 </div>
+</div>
     <% end %>
-<%=  %>
+</div>
