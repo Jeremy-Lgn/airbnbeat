@@ -183,3 +183,34 @@
   flex: 0 0 auto;
   margin: 60px;
 }
+
+// .amazing {
+//   width: 100%;
+//   margin: 0 auto;
+//   padding-top: 40px;
+// }
+
+.scaleDown {
+  transform: scale(0.9);
+  transform-origin: 50% 0 0;
+  margin-bottom: -50px;
+}
+
+.special {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.special_2 {
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.button {
+  background-color: #F1A20D;
+  color: white;
+  border: 1px solid;
+  border-radius: 4px;
+}
+
+.text_decoration_none {
+  text-decoration: none;
+}
