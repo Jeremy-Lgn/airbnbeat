@@ -214,3 +214,30 @@
 .text_decoration_none {
   text-decoration: none;
 }
+
+.magic_price {
+  background-color: #F1A20D;
+  color: white;
+  text-align: center;
+  padding: 2px;
+  font-weight: bold;
+  border-radius: 2px;
+  border: 1px solid;
+  border-color: #cb880d;
+  margin-left: 20px;
+  margin-right: 20px;
+  transition: transform .2s;
+}
+
+.magic_price:hover {
+  background-color: black;
+
+}
+
+.magic_price:hover {
+  transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+.font_title {
+  text-align: center;
+}

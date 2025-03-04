@@ -7,9 +7,9 @@
             <%= cl_image_tag(instrument.photos.sample.key,
             height: 300, crop: "scale", class: :special) %>
             <div class="card-body">
-              <h5 class="card-title"><%= instrument.title %></h5>
-              <p class="card-text "><%= instrument.user.address %></p>
-              <h3 class="card-title"><%= instrument.price_per_day %>€</h3>
+              <h5 class="card-title font_title"><%= instrument.title %></h5>
+              <p class="card-text font_title"><%= instrument.user.address %></p>
+              <h3 class="card-title magic_price"><%= instrument.price_per_day %>€</h3>
             </div>
           </div>
         <% end %>

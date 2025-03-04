@@ -15,6 +15,10 @@ body {
   font-family: Arial, sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
+
 :root {
   --primary-color: #ff5a5f;       /* Airbnb-inspired red/pink */
   --primary-hover: #e14b50;
