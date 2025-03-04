@@ -2,7 +2,8 @@
 <% instruments.each do |instrument| %>
 <div class="col-6 col-sm-4">
     <div class="card" style="height: 100%;">
-  <img class="card-img-top" src="<%= asset_path('ukulele.jpg') %>" alt="Card image cap">
+ <%= cl_image_tag(instrument.photos.sample.key,
+      width: 400, height: 300, crop: :fill) %>
   <div class="card-body">
     <h5 class="card-title"><%= instrument.title %></h5>
     <p class="card-text"><%= instrument.user.address %></p>
