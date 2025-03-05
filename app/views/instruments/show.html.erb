@@ -2,13 +2,28 @@
     <!-- Images -->
     <div class="row">
         <div class="col-md-6">
-            <div class="border p-5 text-center">Main Picture</div>
+            <div class="border p-5 text-center">
+              <%= cl_image_tag(@instrument.photos.first.key,
+              width: 600, height: 360, crop: "scale") %>
+            </div>
         </div>
         <div class="col-md-6 d-flex flex-wrap">
-            <div class="border p-3 m-2">Picture</div>
-            <div class="border p-3 m-2">Picture</div>
-            <div class="border p-3 m-2">Picture</div>
-            <div class="border p-3 m-2">Picture</div>
+            <div class="border p-3 m-0">
+              <%= cl_image_tag(@instrument.photos.first.key,
+              width: 260, height: 170, crop: "scale") %>
+            </div>
+            <div class="border p-3 m-0">
+              <%= cl_image_tag(@instrument.photos.first.key,
+              width: 260, height: 170, crop: "scale") %>
+            </div>
+            <div class="border p-3 m-0">
+              <%= cl_image_tag(@instrument.photos.first.key,
+              width: 260, height: 170, crop: "scale") %>
+            </div>
+            <div class="border p-3 m-0">
+              <%= cl_image_tag(@instrument.photos.first.key,
+              width: 260, height: 170, crop: "scale") %>
+            </div>
         </div>
     </div>
     <!-- Location time -->
@@ -37,56 +52,23 @@
             </div>
         </div>
     </div>
-    <!-- Rating -->
-    <div class="border mt-4 p-4">
-        <h5>Rating and Reviews</h5>
-        <div class="row">
-            <div class="col-md-4 text-center">
-                <h3>4.5/5</h3>
-                <div class="rating-stars">
-                    <i class="fa fa-star" style="color: gold;"></i>
-                    <i class="fa fa-star" style="color: gold;"></i>
-                    <i class="fa fa-star" style="color: gold;"></i>
-                    <i class="fa fa-star" style="color: gold;"></i>
-                    <i class="fa fa-star" style="color: gray;"></i>
-                </div>
-                <p>Based on 200 reviews</p>
+    <!-- Rating Section -->
+<div class="border mt-4 p-4">
+    <h5>Rating and Reviews</h5>
+    <div class="row">
+
+        <div class="col-md-4 text-center">
+            <h3>4.5/5</h3>
+            <div class="rating-stars">
+              <%= render "star_rating",rating:4.5%>
             </div>
-            <div class="col-md-8">
-                <div class="border p-3 bg-light">
-                    <h6>Excellent</h6>
-                    <div class="rating-stars small">
-                        <i class="fa fa-star" style="color: gold;"></i>
-                        <i class="fa fa-star" style="color: gold;"></i>
-                        <i class="fa fa-star" style="color: gold;"></i>
-                        <i class="fa fa-star" style="color: gold;"></i>
-                        <i class="fa fa-star" style="color: gray;"></i>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
-                </div>
-                <div class="border p-3 bg-light mt-3">
-                    <h6>Good</h6>
-                    <div class="rating-stars small">
-                        <i class="fa fa-star" style="color: gold;"></i>
-                        <i class="fa fa-star" style="color: gold;"></i>
-                        <i class="fa fa-star" style="color: gold;"></i>
-                        <i class="fa fa-star" style="color: gray;"></i>
-                        <i class="fa fa-star" style="color: gray;"></i>
-                    </div>
-                    <p>Nunc rutrum urna dignissim, ultrices arcu a, euismod felis. Nulla facilisi. Aliquam erat volutpat.</p>
-                </div>
-                <div class="border p-3 bg-light mt-3">
-                    <h6>Amazing Experience</h6>
-                    <div class="rating-stars small">
-                        <i class="fa fa-star" style="color: gold;"></i>
-                        <i class="fa fa-star" style="color: gold;"></i>
-                        <i class="fa fa-star" style="color: gold;"></i>
-                        <i class="fa fa-star" style="color: gold;"></i>
-                        <i class="fa fa-star" style="color: gold;"></i>
-                    </div>
-                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras tristique lacus vel purus finibus, at posuere mi ornare.</p>
-                </div>
-            </div>
+            <p>Average review</p>
+        </div>
+
+        <div class="col-md-8">
+            <%= render "review", title: "Excellent", rating: 3.5, review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex." %>
+            <%= render "review", title: "Good", rating: 3, review: "Nunc rutrum urna dignissim, ultrices arcu a, euismod felis. Nulla facilisi. Aliquam erat volutpat." %>
+            <%= render "review", title: "Amazing Experience", rating: 5, review: "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras tristique lacus vel purus finibus, at posuere mi ornare." %>
         </div>
     </div>
 </div>

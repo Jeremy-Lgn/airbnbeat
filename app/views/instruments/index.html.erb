@@ -1,6 +1,17 @@
 <h1 class="font_title pt-5">Louez les meilleurs instruments près de chez vous</h1>
+
+<div class="instruments-map-layout">
   <div id="instruments" class="instrument-section">
     <%= render "instrument", instruments: @instruments %>
   </div>
-  <div class=""></div>
+
+  <div class="map-container">
+    <%= image_tag "placeholder_map.png", alt: "Carte de localisation", class: "placeholder_map_image" %>
+    <div id="instruments-map"></div>
+    <div class="map-controls">
+      <button id="zoom-in"><i class="fas fa-search-plus"></i></button>
+      <button id="zoom-out"><i class="fas fa-search-minus"></i></button>
+      <button id="locate-me"><i class="fas fa-crosshairs"></i></button>
+    </div>
+  </div>
 </div>
