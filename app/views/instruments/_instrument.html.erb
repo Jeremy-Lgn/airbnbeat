@@ -1,15 +1,19 @@
-<div class="amazing scaleDown">
-  <div class="row g-4 p-5">
+<div class="instruments-gallery">
+  <div class="cards-container">
     <% instruments.each do |instrument| %>
-      <div class="col-6 col-sm-4">
-        <%= link_to instrument_path(instrument) do%>
-          <div class="card special_2" style="height: 100%;">
-            <%= cl_image_tag(instrument.photos.sample.key,
-            height: 300, crop: "scale", class: :special) %>
-            <div class="card-body">
-              <h5 class="card-title font_title"><%= instrument.title %></h5>
-              <p class="card-text font_title"><%= instrument.user.address %></p>
-              <h3 class="card-title magic_price"><%= instrument.price_per_day %>€</h3>
+      <div class="card-wrapper">
+        <%= link_to instrument_path(instrument), class: "card-link" do %>
+          <div class="instrument-card">
+            <div class="card-image">
+              <%= cl_image_tag(instrument.photos.sample.key, crop: "scale") %>
+              <% if instrument.created_at > 1.day.ago %>
+                <div class="badge-new">Nouveau</div>
+              <% end %>
+            </div>
+            <div class="card-info">
+              <h5 class="card-title"><%= instrument.title %></h5>
+              <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= instrument.user.address %></p>
+              <div class="card-price"><%= instrument.price_per_day %>€</div>
             </div>
           </div>
         <% end %>
