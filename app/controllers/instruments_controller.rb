@@ -19,7 +19,7 @@ class InstrumentsController < ApplicationController
     @instrument = Instrument.new(instrument_params)
     @instrument.user = current_user
     @instrument.category = Category.find(params[:instrument][:category_id])
-
+    
     if @instrument.save
       redirect_to @instrument, notice: 'Instrument créé.'
     else
@@ -34,7 +34,7 @@ class InstrumentsController < ApplicationController
   private
 
   def instrument_params
-    params.require(:instrument).permit(:brand, :model, :description, :price_per_day, :title)
+    params.require(:instrument).permit(:brand, :model, :description, :price_per_day, :title, photos: [])
   end
 
 end

@@ -1,6 +1,6 @@
 
 <div class="instrument-form">
- 
+
 
   <%= simple_form_for(@instrument) do |f| %>
     <div class="form-inputs">
@@ -10,6 +10,7 @@
       <%= f.input :price_per_day %>
       <%= f.input :description, as: :text %>
       <%= f.association :category %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %> # Ajout du sélecteur de photos
 
     </div>
 
