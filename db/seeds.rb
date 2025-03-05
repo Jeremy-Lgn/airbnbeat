@@ -12,6 +12,7 @@ require "faker"
 
 puts "cleaning database..."
 
+Booking.destroy_all
 Instrument.destroy_all
 User.destroy_all
 Category.destroy_all
@@ -32,8 +33,9 @@ Category.create!(title: "Keyboard", icon: "🎹")
 
 
 puts 'creating loops'
- 50.times do
-  Instrument.create!(
+ 10.times do
+  puts 'creating an Instrument'
+  instrument = Instrument.new(
     brand: brands.sample,
     description: Faker::Lorem.sentence(word_count: 10),
     model: models.sample,
@@ -42,4 +44,20 @@ puts 'creating loops'
     user: User.all.sample,
     category: Category.all.sample
   )
+
+  puts 'attaching file 1'
+  file = URI.parse("https://res.cloudinary.com/dm2aoqxzy/image/upload/v1741095340/inst-1.png").open
+  instrument.photos.attach(io: file, filename: "inst1.png", content_type: "image/png")
+  puts 'attaching file 2'
+  file = URI.parse("https://res.cloudinary.com/dm2aoqxzy/image/upload/v1741095340/inst-2.png").open
+  instrument.photos.attach(io: file, filename: "inst2.png", content_type: "image/png")
+  puts 'attaching file 3'
+  file = URI.parse("https://res.cloudinary.com/dm2aoqxzy/image/upload/v1741095340/inst-3.png").open
+  instrument.photos.attach(io: file, filename: "inst3.png", content_type: "image/png")
+  puts 'saving...'
+  instrument.save!
 end
+
+puts 'creating bookings'
+Booking.create!(start_date: Date.new(2025,2,3), end_date: Date.new(2025,2,6), user: User.all.sample, instrument: Instrument.all.sample)
+Booking.create!(start_date: Date.new(2025,4,6), end_date: Date.new(2025,5,8), user: User.all.sample, instrument: Instrument.all.sample)
