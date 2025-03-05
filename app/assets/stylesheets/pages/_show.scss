@@ -1,5 +1,5 @@
 :root {
-  --primary-color: #ff5a5f;       /* Airbnb-inspired red/pink */
+  --primary-color: #ff5a5f;       /* Airbnb-inspired colors */
   --primary-hover: #e14b50;
   --border-color: #e2e2e2;
   --bg-light: #f7f7f7;
@@ -17,7 +17,7 @@
   color: var(--text-dark);
 }
 
-/* Global border styling with soft shadow and radius */
+/* bordures globales des sections */
 .border {
   border: 1px solid var(--border-color);
   border-radius: 6px;
@@ -29,7 +29,7 @@
    Image Section
 -------------------------------------*/
 
-/* Main image container for a clean placeholder look */
+/* Container des images */
 .col-md-6 > .border {
   background-color: #f8f8f8;
   height: 320px;
@@ -42,7 +42,7 @@
   overflow: hidden;
 }
 
-/* Thumbnail images styling */
+/* Styling des images */
 .col-md-6.d-flex.flex-wrap .border {
   background-color: #f8f8f8;
   width: calc(50% - 20px);
@@ -66,35 +66,21 @@
    Location & Reservation Section
 -------------------------------------*/
 
-/* Section header styling */
+/* Styling section location */
 .border.mt-4.p-4 h5 {
   font-size: 1.3rem;
   font-weight: 600;
   margin-bottom: 20px;
 }
 
-/* Calendar Input styling */
-#calendar {
-  border: none;
-  border-bottom: 2px solid var(--border-color);
-  border-radius: 0;
-  font-size: 1rem;
-  padding: 8px 5px;
-  transition: border-color 0.25s ease;
-}
 
-#calendar:focus {
-  outline: none;
-  border-color: var(--primary-color);
-}
-
-/* Pricing and reservation details styling */
+/* Prix par jour et prix total */
 .col-md-4 > .border {
   padding: 20px;
   text-align: center;
-  background-color: #fff;
 }
 
+/*Boutton reservation*/
 .col-md-4 > .border.bg-primary {
   background-color: var(--primary-color) !important;
   border-color: var(--primary-color) !important;
@@ -111,7 +97,7 @@
 }
 
 /*------------------------------------
-   Owner & Description Section
+   Vendeur et description Section
 -------------------------------------*/
 /* Description area */
 .col-md-9 h5 {
