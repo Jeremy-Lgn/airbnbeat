@@ -30,10 +30,14 @@
     <!-- descrition et info proprio -->
     <div class="border mt-4 p-4">
         <div class="row">
-            <div class="col-md-3 border p-3">Avatar <br> Name</div>
+            <div class="col-md-3 border p-3">
+              <h5><%= @instrument.user.name %></h5>
+              <p><%= @instrument.user.address %></p>
+            </div>
             <div class="col-md-9">
-                <h5 class="mb-4">Description</h5><%=@instrument.description %>
-
+                <h5 class="mb-4"><%=@instrument.title %></h5>
+                <p><%=@instrument.description %></p>
+                <p><%=@instrument.price_per_day %>€ / day</p>
             </div>
         </div>
     </div>
