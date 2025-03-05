@@ -22,8 +22,12 @@ models = [ "Yamaha FG800", "Fender Stratocaster", "Ibanez SR", "Roland Digital K
 titles = [ "Yamaha FG800 Acoustic Guitar Rental", "Fender Stratocaster Electric Guitar Rental", "Ibanez SR Bass Guitar Rental", "Roland Digital Keyboard Rental", "Pearl Drum Set Rental", "Stradivarius-Inspired Violin Rental", "Yamaha Alto Saxophone Rental", "Bach Stradivarius Trumpet Rental", "Handcrafted Cello Rental", "Buffet Crampon Clarinet Rental", "Aegean Mandolin Rental", "Deering Banjo Rental", "Casio Electric Piano Rental", "Korg Synthesizer Rental", "Complete Percussion Set Rental", "Pearl Flute Rental", "Hohner Diatonic Harmonica Rental", "Well-Tuned Viola Rental", "Sturdy Double Bass Rental", "Pioneer DJ Controller Rental" ]
 
 puts "creating users"
-User.create!(email: "toto@sfr.fr", password: "password", name: "toto", address: "22 rue des capucins 69005 Lyon")
-User.create!(email: "tito@sfr.en", password: "password", name: "tata", address: "48 rue des capucines 69005 Lyon")
+User.create!(email: "toto@sfr.fr", password: "password", name: "toto", address: "22 rue des capucins 69001 Lyon")
+User.create!(email: "tito@sfr.en", password: "password", name: "tata", address: "1 rue Burdeau 69001 Lyon")
+User.create!(email: "tata@sfr.fr", password: "password", name: "toto", address: "1 place Louis Pardel 69001 Lyon")
+User.create!(email: "tutu@sfr.en", password: "password", name: "tata", address: "9 rue des Augustins 69001 Lyon")
+User.create!(email: "titi@sfr.fr", password: "password", name: "toto", address: "4 rue de la Martinière 69001 Lyon")
+User.create!(email: "toti@sfr.en", password: "password", name: "tata", address: "15 rue Bouteille 69001 Lyon")
 
 
 puts "creating categories"
@@ -33,6 +37,10 @@ Category.create!(title: "Keyboard", icon: "🎹")
 
 
 puts 'creating loops'
+file1 = URI.parse("https://res.cloudinary.com/dm2aoqxzy/image/upload/v1741095340/inst-1.png").open
+file2 = URI.parse("https://res.cloudinary.com/dm2aoqxzy/image/upload/v1741095340/inst-2.png").open
+file3 = URI.parse("https://res.cloudinary.com/dm2aoqxzy/image/upload/v1741095340/inst-3.png").open
+
  10.times do
   puts 'creating an Instrument'
   instrument = Instrument.new(
@@ -46,14 +54,14 @@ puts 'creating loops'
   )
 
   puts 'attaching file 1'
-  file = URI.parse("https://res.cloudinary.com/dm2aoqxzy/image/upload/v1741095340/inst-1.png").open
-  instrument.photos.attach(io: file, filename: "inst1.png", content_type: "image/png")
+
+  instrument.photos.attach(io: file1, filename: "inst1.png", content_type: "image/png")
   puts 'attaching file 2'
-  file = URI.parse("https://res.cloudinary.com/dm2aoqxzy/image/upload/v1741095340/inst-2.png").open
-  instrument.photos.attach(io: file, filename: "inst2.png", content_type: "image/png")
+
+  instrument.photos.attach(io: file2, filename: "inst2.png", content_type: "image/png")
   puts 'attaching file 3'
-  file = URI.parse("https://res.cloudinary.com/dm2aoqxzy/image/upload/v1741095340/inst-3.png").open
-  instrument.photos.attach(io: file, filename: "inst3.png", content_type: "image/png")
+
+  instrument.photos.attach(io: file3, filename: "inst3.png", content_type: "image/png")
   puts 'saving...'
   instrument.save!
 end
