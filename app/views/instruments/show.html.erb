@@ -1,10 +1,10 @@
+
 <div class="container mt-4">
-    <!-- Images -->
-    <div class="row">
+    <!--Images -->
+    <div class="row mb-4">
         <div class="col-md-6">
             <div class="border p-5 text-center">
-              <%= cl_image_tag(@instrument.photos.first.key,
-              width: 600, height: 360, crop: "scale") %>
+              <%= cl_image_tag(@instrument.photos.first.key, width: 600, height: 360, crop: "scale") %>
             </div>
         </div>
         <div class="col-md-6 d-flex flex-wrap">
@@ -26,49 +26,15 @@
             </div>
         </div>
     </div>
-    <!-- Location time -->
-    <div class="border mt-4 p-4">
-        <h5>Location time</h5>
-        <div class="row">
-            <div class="col-md-8 border p-4">
-                <input type="text" id="calendar" class="form-control" placeholder="Select a date">
-            </div>
-            <div class="col-md-4">
-                <div class="border p-3">70$/day <br> Caution: 120$</div>
-                <div class="border p-3 mt-2">Duration: 3d <br> Total: 360$</div>
-                <div class="border p-3 mt-2 text-center bg-primary text-white">Reservation</div>
-            </div>
-        </div>
-    </div>
-    <!-- Owner and Description -->
+    <!-- Calendrier et reservation -->
+    <!-- descrition et info proprio -->
     <div class="border mt-4 p-4">
         <div class="row">
             <div class="col-md-3 border p-3">Avatar <br> Name</div>
             <div class="col-md-9">
-                <h5 class="mb-4">Description</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam erat volutpat. Quisque malesuada bibendum tellus. Integer tempor cursus felis, in malesuada ex tempor in.</p>
-                <p>Nunc rutrum urna dignissim, ultrices arcu a, euismod felis. Nulla facilisi. Aliquam erat volutpat. Nunc eget diam vel sapien gravida mollis. Donec eu turpis et purus Lobortis gravida et et diam. Fusce interdum ante ac metus egestas, vel suscipit diam lacinia. Sed gravida sollicitudin felis, sit amet euismod nibh sollicitudin vel.</p>
-                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras tristique lacus vel purus finibus, at posuere mi ornare. Quisque mollis ultrices ex, a venenatis metus auctor non. Proin sed metus id dolor pulvinar posuere sit amet sit amet ex.</p>
+                <h5 class="mb-4">Description</h5><%=@instrument.description %>
+
             </div>
         </div>
     </div>
-    <!-- Rating Section -->
-<div class="border mt-4 p-4">
-    <h5>Rating and Reviews</h5>
-    <div class="row">
-
-        <div class="col-md-4 text-center">
-            <h3>4.5/5</h3>
-            <div class="rating-stars">
-              <%= render "star_rating",rating:4.5%>
-            </div>
-            <p>Average review</p>
-        </div>
-
-        <div class="col-md-8">
-            <%= render "review", title: "Excellent", rating: 3.5, review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex." %>
-            <%= render "review", title: "Good", rating: 3, review: "Nunc rutrum urna dignissim, ultrices arcu a, euismod felis. Nulla facilisi. Aliquam erat volutpat." %>
-            <%= render "review", title: "Amazing Experience", rating: 5, review: "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras tristique lacus vel purus finibus, at posuere mi ornare." %>
-        </div>
-    </div>
-</div>
+    <!-- notes -->
