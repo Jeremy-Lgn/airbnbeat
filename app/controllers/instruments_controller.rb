@@ -3,15 +3,16 @@ class InstrumentsController < ApplicationController
 
   def index
     @instruments = Instrument.all
+    @inst_geocodeds = @instruments.select { |instrument| instrument.user.geocoded? }
 
-    # address is on the instrument's user
-    @markers = @instruments.map(&:user).geocoded.map do |flat|
+    @markers = @inst_geocodeds.map do |inst_geocoded|
       {
-        lat: flat.latitude,
-        lng: flat.longitude
+        # address is on the user
+        lat: inst_geocoded.user.latitude,
+        lng: inst_geocoded.user.longitude,
+        info_marker_html: render_to_string(partial: "info_marker", locals: {instrument: inst_geocoded})
       }
     end
-
   end
 
   def show

@@ -6,8 +6,13 @@
   </div>
 
   <div class="map-container">
-    <%= image_tag "placeholder_map.png", alt: "Carte de localisation", class: "placeholder_map_image" %>
-    <div id="instruments-map"></div>
+
+    <div style="width: 100%; height: 600px"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+
     <div class="map-controls">
       <button id="zoom-in"><i class="fas fa-search-plus"></i></button>
       <button id="zoom-out"><i class="fas fa-search-minus"></i></button>
