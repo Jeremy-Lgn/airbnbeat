@@ -3,6 +3,8 @@ class InstrumentsController < ApplicationController
 
   def index
     @instruments = Instrument.all
+
+    @instruments = Instrument.search_by_title(params[:query]) if params[:query].present?
     @inst_geocodeds = @instruments.select { |instrument| instrument.user.geocoded? }
 
     @markers = @inst_geocodeds.map do |inst_geocoded|
