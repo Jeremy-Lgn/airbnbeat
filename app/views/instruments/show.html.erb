@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class="mt-4 d-flex" data-controller="submit-booking toggle">
-          <button class="btn btn-primary" data-action="click->toggle#fire" >
+          <button class="btn btn-primary <%= user_signed_in? ? "" : "d-none" %>" data-action="click->toggle#fire">
             Réserver cet instrument !
           </button>
           <div class="d-none" data-toggle-target="togglableElement">
