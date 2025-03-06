@@ -17,7 +17,7 @@
             </div>
           <% end %>
           <div class="sound-icon" data-controller="sound"
-               data-sound-url-value="<%= audio_path("#{instrument.category.title.downcase}.mp3") %>">
+               data-sound-url-value="<%= audio_path(instrument.category.sound_file) %>">
             <i class="fa-solid fa-music" data-action="click->sound#play"></i>
           </div>
         </div>
