@@ -3,6 +3,8 @@ class InstrumentsController < ApplicationController
 
   def index
     @instruments = Instrument.all
+
+    @instruments = Instrument.search_by_title(params[:query]) if params[:query].present?
     @inst_geocodeds = @instruments.select { |instrument| instrument.user.geocoded? }
 
     @markers = @inst_geocodeds.map do |inst_geocoded|
@@ -30,7 +32,7 @@ class InstrumentsController < ApplicationController
     @instrument = Instrument.new(instrument_params)
     @instrument.user = current_user
     @instrument.category = Category.find(params[:instrument][:category_id])
-    
+
     if @instrument.save
       redirect_to @instrument, notice: 'Instrument créé.'
     else
