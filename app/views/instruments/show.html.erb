@@ -46,7 +46,7 @@
       </div>
       <div class="subbutton" data-controller="submit-booking toggle">
         <div class="container">
-  <button class="btn btn-primary beautifulbtn" data-action="click->toggle#fire" data-toggle-target="buttonElement">
+  <button class="btn btn-primary beautifulbtn <%= user_signed_in? ? "" : "d-none" %>" data-action="click->toggle#fire" data-toggle-target="buttonElement">
   Réserver cet instrument !
 </button>
 
