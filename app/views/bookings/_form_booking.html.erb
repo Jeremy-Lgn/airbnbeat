@@ -1,15 +1,52 @@
-<div class="booking-dates">
-  <%= simple_form_for [@instrument, @booking], html: { class: 'form-inline' },
-    data: { submit_booking_target: "form", action: "submit->submit-booking#send" } do |f| %>
+<div class="booking-dates card shadow-sm p-3 my-3 mx-auto" style="max-width: 350px;" data-controller="booking-calculator"
+     data-booking-calculator-price-value="<%= @instrument.price_per_day %>">
+  <h5 class="text-center mb-3">Réservation</h5>
+
+<%= simple_form_for [@instrument, @booking], data: { submit_booking_target: "form", action: "submit->submit-booking#send" } do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-    <div class="d-flex align-items-center justify-content-center">
-      <%= f.input :start_date, as: :date, html5: true, label: false%>
-      <%= f.input :end_date, as: :date, html5: true, label: false %>
-<div class="container">
-      <%= f.button :submit, class: "btn btn-primary beautifulbtn position" %>
+
+    <div class="mb-3">
+      <label class="form-label">Du</label>
+      <%= f.input :start_date, as: :date, html5: true, label: false,
+          wrapper_html: { class: 'mb-3' },
+          input_html: {
+            class: 'form-control',
+            data: {
+              booking_calculator_target: "startDate",
+              action: "change->booking-calculator#updateCalculation"
+            }
+          } %>
+
+      <label class="form-label">Au</label>
+      <%= f.input :end_date, as: :date, html5: true, label: false,
+          wrapper_html: { class: 'mb-0' },
+          input_html: {
+            class: 'form-control',
+            data: {
+              booking_calculator_target: "endDate",
+              action: "change->booking-calculator#updateCalculation"
+            }
+          } %>
+    </div>
+
+    <div class="calculation-box mb-3 d-none" data-booking-calculator-target="calculationBox">
+      <div class="card bg-light">
+        <div class="card-body p-3">
+          <div class="d-flex justify-content-between mb-2">
+            <span>Durée:</span>
+            <span class="fw-bold"><span data-booking-calculator-target="duration"></span> jours</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <span>Prix total:</span>
+            <span class="text-primary fw-bold"><span data-booking-calculator-target="totalPrice"></span> €</span>
+          </div>
+        </div>
       </div>
-      </div>
+    </div>
+
+    <div class="text-center">
+      <%= f.button :submit, "Réserver", class: "btn btn-primary beautifulbtn w-100" %>
     </div>
   <% end %>
 </div>

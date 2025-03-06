@@ -21,7 +21,7 @@ class BookingsController < ApplicationController
 
     respond_to do |format|
       if @booking.save
-        format.html { redirect_to @instrument, notice: "Booking was successfully created." }
+        format.html { redirect_to @instrument, booking_success: true }
       else
         format.html { render "instruments/show", status: :unprocessable_entity }
       end

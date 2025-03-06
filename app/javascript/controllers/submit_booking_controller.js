@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="submit-booking"
 export default class extends Controller {
-  static targets = ["form"]
+  static targets = ["form", "successMessage", "bookingForm"]
 
   connect() {
     console.log("connexion")
@@ -11,9 +11,9 @@ export default class extends Controller {
   send(event) {
     event.preventDefault()
     console.log("youhou")
-    console.log(this.element.action)
+
     fetch(this.formTarget.action, {
-      method: "POST", // Could be dynamic with Stimulus values
+      method: "POST",
       headers: { "Accept": "application/json" },
       body: new FormData(this.formTarget)
     })
@@ -21,7 +21,8 @@ export default class extends Controller {
       .then((data) => {
         console.log(data)
         if (data.success) {
-          this.element.outerHTML = data.form
+          this.bookingFormTarget.classList.add("d-none")
+          this.successMessageTarget.classList.remove("d-none")
           console.log("true")
         }
         else {
