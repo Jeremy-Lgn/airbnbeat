@@ -33,7 +33,17 @@
 }
 
 .beautiful-container {
-  background-color: black;
+  padding: 0px;
+  background-color: orange;
   display: flex;
   justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 20px;
+}
+
+.beautiful_txt {
+  text-align: center;
+  font-weight: bold;
+  font-size: 48px;
+  padding-top: 20px;
 }
