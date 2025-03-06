@@ -1,13 +1,13 @@
 <div class="container beautiful-container">
   <div data-controller="lightbox">
-    <div class="col-md-6">
+    <div class="">
       <div class="border p-3 m-0">
         <%= cl_image_tag(@instrument.photos.first.key, width: 600, height: 360, crop: "scale", data: { action: "click->lightbox#open" }) %>
       </div>
     </div>
 
 
-      <div class="col-md-6 d-flex flex-wrap">
+      <div class="">
         <% @instrument.photos.each_with_index do |photo, index| %>
           <div class="border p-3 m-0">
             <%= cl_image_tag(photo.key, width: 260, height: 170, crop: "scale", data: { action: "click->lightbox#open" }) %>
