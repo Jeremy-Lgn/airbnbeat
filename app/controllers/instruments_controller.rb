@@ -19,11 +19,15 @@ class InstrumentsController < ApplicationController
 
   def show
     @instrument = Instrument.find(params[:id])
+    @booking = Booking.new
+    @feedbacks = Feedback.joins(:booking).where(bookings: { instrument_id: @instrument.id })
+    @average_rating = @feedbacks.average(:rating).to_f
   end
 
   def new
     @instrument = Instrument.new
     @user_name = current_user.name
+    @user_instruments = current_user.instruments # Récupère les instruments de l'utilisateur
   end
 
 
@@ -39,9 +43,6 @@ class InstrumentsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-
-
-
 
 
   private
