@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_05_163931) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_06_103324) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -61,15 +61,12 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_05_163931) do
   end
 
   create_table "feedbacks", force: :cascade do |t|
-    t.bigint "instrument_id", null: false
-    t.bigint "user_id", null: false
-    t.string "title"
-    t.text "review"
-    t.float "rating"
+    t.integer "rating"
+    t.text "comment"
+    t.bigint "booking_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["instrument_id"], name: "index_feedbacks_on_instrument_id"
-    t.index ["user_id"], name: "index_feedbacks_on_user_id"
+    t.index ["booking_id"], name: "index_feedbacks_on_booking_id"
   end
 
   create_table "instruments", force: :cascade do |t|
@@ -106,8 +103,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_05_163931) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookings", "instruments"
   add_foreign_key "bookings", "users"
-  add_foreign_key "feedbacks", "instruments"
-  add_foreign_key "feedbacks", "users"
+  add_foreign_key "feedbacks", "bookings"
   add_foreign_key "instruments", "categories"
   add_foreign_key "instruments", "users"
 end
