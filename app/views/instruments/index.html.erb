@@ -1,8 +1,23 @@
 <h1 class="font_title pt-5">Louez les meilleurs instruments près de chez vous</h1>
 
+<div class="container">
+  <div class="row justify-content-left">
+    <div class="col-sm-8 my-3">
+      <%= form_with url: root_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Tapez un instrument..." %>
+        <%= submit_tag "Rechercher", name: "", class: "btn btn-warning ml-2" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
 <div class="instruments-map-layout">
   <div id="instruments" class="instrument-section">
-    <%= render "shared/instrument", instruments: @instruments %>
+    <% if @instruments.any? %>
+      <%= render "shared/instrument", instruments: @instruments %>
+    <% else %>
+      <p>Désolé, nous n'avons pas trouvé ton instrument</p>
+    <% end %>
   </div>
 
   <div class="map-container">

@@ -1,61 +1,90 @@
-<div class="container mt-4">
-    <!-- Images -->
-    <div class="row mb-4">
+<div class="container">
+  <p class="beautiful_txt">Informations complémentaires</p>
+</div>
+
+
+
+  <div class="container beautiful-container">
+    <div data-controller="lightbox">
+      <div class="row">
         <div class="col-md-6">
-            <div class="border p-5 text-center">
-                <%= cl_image_tag(@instrument.photos.first.key, width: 600, height: 360, crop: "scale") %>
-            </div>
+          <div class="border p-3 m-0">
+            <%= cl_image_tag(@instrument.photos.first.key, width: 600, height: 360, crop: "scale", class: "img-fluid", data: { action: "click->lightbox#open" }) %>
+          </div>
         </div>
-        <div class="col-md-6 d-flex flex-wrap">
-            <div class="border p-3 m-0">
-                <%= cl_image_tag(@instrument.photos.first.key, width: 260, height: 170, crop: "scale") %>
-            </div>
-            <div class="border p-3 m-0">
-                <%= cl_image_tag(@instrument.photos.first.key, width: 260, height: 170, crop: "scale") %>
-            </div>
-            <div class="border p-3 m-0">
-                <%= cl_image_tag(@instrument.photos.first.key, width: 260, height: 170, crop: "scale") %>
-            </div>
-            <div class="border p-3 m-0">
-                <%= cl_image_tag(@instrument.photos.first.key, width: 260, height: 170, crop: "scale") %>
-            </div>
-        </div>
-    </div>
-    <!-- Calendrier et reservation -->
-    <!-- Description et info proprio -->
-    <div class="border mt-4 p-4">
-        <div class="row">
-            <div class="col-md-3 border p-3">
-                <h5><%= @instrument.user.name %></h5>
-                <p><%= @instrument.user.address %></p>
-            </div>
-            <div class="col-md-9">
-                <h5 class="mb-4"><%= @instrument.title %></h5>
-                <p><%= @instrument.description %></p>
-                <p><%= @instrument.price_per_day %>€ / day</p>
-            </div>
-        </div>
-    <!-- Notes -->
-    <div class="border mt-4 p-4">
-        <h4 class="mb-3"><strong>Avis</strong></h4>
-        <% if @feedbacks.present? %>
-            <% average_rating = @feedbacks.average(:rating).to_i %>
-            <div class="d-flex">
-                <!-- "Note moyenne" -->
-                <h5 class="mb-0 me-2">Note moyenne:</h5>
-                <!-- "Etoiles" -->
-                <div class="stars me-2">
-                    <%= render "star_rating", rating: average_rating %>
+        <div class="col-md-6">
+          <div class="row">
+            <% @instrument.photos.each do |photo| %>
+              <div class="col-md-4 mb-3">
+                <div class="border p-3 m-0 h-100">
+                  <%= cl_image_tag(photo.key, width: 260, height: 170, crop: "scale", class: "img-fluid", data: { action: "click->lightbox#open" }) %>
                 </div>
-                <strong><%= average_rating %></strong>
-            </div>
-            <div class="reviews mt-4">
-                <% @feedbacks.each do |feedback| %>
-                    <%= render "review", rating: feedback.rating, review: feedback.comment %>
-                <% end %>
-            </div>
-        <% else %>
-            <p>Aucun avis pour le moment.</p>
-        <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div data-lightbox-target="overlay" data-action="click->lightbox#close" class="lightbox-overlay hidden">
+        <img data-lightbox-target="image" src="" data-action="click->lightbox#stopPropagation" />
+        <button data-action="click->lightbox#close" class="lightbox-close">×</button>
+      </div>
     </div>
+  </div>
+
+  <div class="container beautiful-container mt-4">
+
+      <div class="row">
+        <div class="container mt-2">
+          <h5 class="fw-bold"><%= @instrument.title %></h5>
+          <p class="fst-italic"><%= @instrument.description %></p>
+          <h2 class="fw-bold"><%= @instrument.price_per_day %>€ / day</h2>
+        </div>
+        <div class="container">
+          <h5 class="fw-bold"><%= @instrument.user.name.capitalize %></h5>
+          <p class="fst-italic"><%= @instrument.user.address %></p>
+        </div>
+      </div>
+      <div class="subbutton" data-controller="submit-booking toggle">
+        <div class="container">
+  <button class="btn btn-primary beautifulbtn" data-action="click->toggle#fire" data-toggle-target="buttonElement">
+  Réserver cet instrument !
+</button>
+
+<div class="d-none" data-toggle-target="togglableElement">
+  <%= render "bookings/form_booking", instrument: @instrument, booking: @booking %>
+</div>
+
+      </div>
+
+  </div>
+
+  <div class="container beautiful-container mt-4">
+
+      <div class="row">
+      <h4 class="mb-3"><strong>Avis</strong></h4>
+      <% if @feedbacks.present? %>
+        <% average_rating = @feedbacks.average(:rating).to_i %>
+        <div class="d-flex">
+          <!-- "Note moyenne" -->
+          <h5 class="mb-0 me-2">Note moyenne:</h5>
+          <!-- "Etoiles" -->
+          <div class="stars me-2">
+            <%= render "star_rating", rating: average_rating %>
+          </div>
+          <strong><%= average_rating %></strong>
+        </div>
+        <div class="reviews mt-4">
+          <% @feedbacks.each do |feedback| %>
+            <%= render "review", rating: feedback.rating, review: feedback.comment %>
+          <% end %>
+        </div>
+      <% else %>
+        <p>Aucun avis pour le moment.</p>
+      <% end %>
+      </div>
+
+  </div>
+
+<div class="container beautiful_txt">
+  DISPONIBLE
 </div>

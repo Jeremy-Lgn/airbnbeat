@@ -3,6 +3,8 @@ class InstrumentsController < ApplicationController
 
   def index
     @instruments = Instrument.all
+
+    @instruments = Instrument.search_by_title(params[:query]) if params[:query].present?
     @inst_geocodeds = @instruments.select { |instrument| instrument.user.geocoded? }
 
     @markers = @inst_geocodeds.map do |inst_geocoded|
@@ -17,6 +19,7 @@ class InstrumentsController < ApplicationController
 
   def show
     @instrument = Instrument.find(params[:id])
+    @booking = Booking.new
     @feedbacks = Feedback.joins(:booking).where(bookings: { instrument_id: @instrument.id })
     @average_rating = @feedbacks.average(:rating).to_f
   end

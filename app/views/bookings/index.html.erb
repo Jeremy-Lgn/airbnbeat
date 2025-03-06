@@ -20,7 +20,7 @@
         </div>
 
         <!-- Feedback Section -->
-        <div class="feedback_section">
+        <div class="feedback_section" data-controller="toggle-form">
           <% feedback = Feedback.find_by(user_id: current_user.id, booking_id: booking.id) %>
 
           <% if feedback.present? %>
@@ -29,14 +29,13 @@
               <p><strong>Votre avis:</strong></p>
               <p>Note: <%= feedback.rating %> / 5</p>
               <p>Commentaire: <%= feedback.comment %></p>
-              <%= link_to "Voir cette réservation", booking_path(booking), class: "btn btn-secondary" %>
             </div>
           <% else %>
             <% if booking.end_date < Date.today %>
               <!-- peut laisser un avis -->
               <div class="no-feedback">
                 <p>Vous n'avez pas encore laissé d'avis pour cette réservation.</p>
-                <button class="btn btn-primary" data-action="click->toggle#toggle" data-target="form-<%= booking.id %>">Laisser un avis</button>
+                <button class="btn btn-primary" data-action="click->toggle-form#toggle" data-target="form-<%= booking.id %>">Laisser un avis</button>
               </div>
 
               <!-- formulaire caché -->
@@ -55,7 +54,6 @@
                   <%= f.submit "Envoyer l'avis", class: "btn btn-success mt-3" %>
                 <% end %>
               </div>
-
             <% else %>
               <!-- Message indiquant que la location n'est pas finie -->
               <div class="no-feedback">

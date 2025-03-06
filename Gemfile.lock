@@ -163,6 +163,10 @@ GEM
       csv (>= 3.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    httparty (0.22.0)
+      csv
+      mini_mime (>= 1.0.0)
+      multi_xml (>= 0.5.2)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.2.3)
@@ -178,6 +182,8 @@ GEM
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     json (2.10.1)
+    jwt (2.10.1)
+      base64
     logger (1.6.6)
     loofah (2.24.0)
       crass (~> 1.0.2)
@@ -192,6 +198,9 @@ GEM
     mini_mime (1.1.5)
     minitest (5.25.4)
     msgpack (1.8.0)
+    multi_json (1.15.0)
+    multi_xml (0.7.1)
+      bigdecimal (~> 3.1)
     multipart-post (2.4.1)
     mutex_m (0.3.0)
     net-http (0.6.0)
@@ -222,9 +231,18 @@ GEM
       racc (~> 1.4)
     nokogiri (1.18.3-x86_64-linux-musl)
       racc (~> 1.4)
+    oauth2 (1.4.11)
+      faraday (>= 0.17.3, < 3.0)
+      jwt (>= 1.0, < 3.0)
+      multi_json (~> 1.3)
+      multi_xml (~> 0.5)
+      rack (>= 1.2, < 4)
     orm_adapter (0.5.0)
     ostruct (0.6.1)
     pg (1.5.9)
+    pg_search (2.3.7)
+      activerecord (>= 6.1)
+      activesupport (>= 6.1)
     popper_js (2.11.8)
     pp (0.6.2)
       prettyprint
@@ -317,6 +335,9 @@ GEM
       railties (>= 7.1.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    unsplash (2.1.0)
+      httparty (~> 0.16)
+      oauth2 (~> 1)
     uri (1.0.3)
     warden (1.2.9)
       rack (>= 2.0.9)
@@ -360,6 +381,7 @@ DEPENDENCIES
   importmap-rails (~> 1.2.3)
   jbuilder
   pg (~> 1.1)
+  pg_search
   puma (>= 5.0)
   rails (~> 7.1.5, >= 7.1.5.1)
   sassc-rails
@@ -369,6 +391,7 @@ DEPENDENCIES
   stimulus-rails
   turbo-rails
   tzinfo-data
+  unsplash
   web-console
 
 RUBY VERSION

@@ -1,0 +1,15 @@
+<div class="booking-dates">
+  <%= simple_form_for [@instrument, @booking], html: { class: 'form-inline' },
+    data: { submit_booking_target: "form", action: "submit->submit-booking#send" } do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <div class="d-flex align-items-center justify-content-center">
+      <%= f.input :start_date, as: :date, html5: true, label: false%>
+      <%= f.input :end_date, as: :date, html5: true, label: false %>
+<div class="container">
+      <%= f.button :submit, class: "btn btn-primary beautifulbtn position" %>
+      </div>
+      </div>
+    </div>
+  <% end %>
+</div>
