@@ -10,12 +10,13 @@
       <%= f.input :price_per_day %>
       <%= f.input :description, as: :text %>
       <%= f.association :category %>
-      <%= f.input :photos, as: :file, input_html: { multiple: true } %> # Ajout du sélecteur de photos
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
 
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit %>
+      <%= f.button :submit, "Créer l'instrument", button_html: { class: 'btn btn-primary' } %>
+      <%= link_to "Retour", root_path, class: "btn btn-secondary" %>
     </div>
   <% end %>
 </div>
