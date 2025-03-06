@@ -1,12 +1,26 @@
-<h1>Your Bookings</h1>
-
-<ul>
-  <% @bookings.each do |booking| %>
-    <%= link_to booking do %>
-      <li>
-        <%= booking.start_date %>
-        <%= booking.end_date %>
-      </li>
-    <% end %>
-  <% end %>
-</ul>
+<div class="good_pad">
+<h1 class="title_booking">Mes réservations</h1>
+</div>
+<div class="pad_good">
+<% @bookings.each do |booking|  %>
+  <div class="contain">
+    <%= cl_image_tag(booking.instrument.photos.first.key, crop: "scale", class: :beautiful_image) %>
+      <div class="beautiful_text">
+        <p>Début de location:</p>
+        <p><%= booking.start_date %></p>
+        <p>Fin de location:</p>
+        <p><%= booking.end_date %></p>
+      </div>
+    <div class="beautiful_text">
+      <p><%= booking.instrument.title %></p>
+    </div>
+    <div class="beautiful_text">
+      <p><%= booking.user.address %></p>
+    </div>
+    <div class="beautiful_text">
+      <p><%= booking.instrument.price_per_day %>€/jour</p>
+      <p>Total: <%= (booking.instrument.price_per_day * 3) + 100 %>€/total</p>
+    </div>
+    </div>
+<% end %>
+</div>

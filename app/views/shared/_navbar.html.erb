@@ -35,6 +35,11 @@
       <%= link_to new_instrument_path, class: "modern-dropdown-item", data: { dropdown_target: "instruments" } do %>
         <span><i class="fa-solid fa-plus space"></i>Créer une annonce</span>
       <% end %>
+
+      <%= link_to bookings_path, class: "modern-dropdown-item", data: { dropdown_target: "item" } do %>
+        <span><i class="fa-solid fa-music space"></i>Mes réservations</span>
+      <% end %>
+
       <%= link_to my_instruments_path, class: "modern-dropdown-item", data: { dropdown_target: "my_instruments" } do %>
         <span><i class="fa-solid fa-plus space"></i>Mes instruments</span>
       <% end %>
