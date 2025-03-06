@@ -15,7 +15,8 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit %>
+      <%= f.button :submit, "Créer l'instrument", button_html: { class: 'btn btn-primary' } %>
+      <%= link_to "Retour", root_path, class: "btn btn-secondary" %>
     </div>
   <% end %>
 </div>
