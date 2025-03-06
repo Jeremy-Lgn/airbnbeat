@@ -17,6 +17,7 @@ class InstrumentsController < ApplicationController
 
   def show
     @instrument = Instrument.find(params[:id])
+    @booking = Booking.new
   end
 
   def new
@@ -30,16 +31,13 @@ class InstrumentsController < ApplicationController
     @instrument = Instrument.new(instrument_params)
     @instrument.user = current_user
     @instrument.category = Category.find(params[:instrument][:category_id])
-    
+
     if @instrument.save
       redirect_to @instrument, notice: 'Instrument créé.'
     else
       render :new, status: :unprocessable_entity
     end
   end
-
-
-
 
 
   private

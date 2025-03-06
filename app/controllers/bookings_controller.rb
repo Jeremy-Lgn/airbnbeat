@@ -19,10 +19,13 @@ class BookingsController < ApplicationController
     @booking.instrument = @instrument
     @booking.user = current_user
 
-    if @booking.save
-      redirect_to @instrument, notice: "Booking was successfully created."
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      if @booking.save
+        format.html { redirect_to @instrument, notice: "Booking was successfully created." }
+      else
+        format.html { render "instruments/show", status: :unprocessable_entity }
+      end
+      format.json
     end
   end
 

@@ -40,5 +40,13 @@
                 <p><%=@instrument.price_per_day %>€ / day</p>
             </div>
         </div>
+        <div class="mt-4 d-flex" data-controller="submit-booking toggle">
+          <button class="btn btn-primary" data-action="click->toggle#fire" >
+            Réserver cet instrument !
+          </button>
+          <div class="d-none" data-toggle-target="togglableElement">
+            <%= render "bookings/form_booking", instrument: @instrument, booking: @booking %>
+          </div>
+        </div>
     </div>
     <!-- notes -->
