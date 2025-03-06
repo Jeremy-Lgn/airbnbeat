@@ -42,10 +42,19 @@ Category.create!(title: "Trumpet", icon: "🎺")
 Category.create!(title: "Cello", icon: "♭")
 
 
-puts 'creating loops'
-file1 = URI.parse("https://res.cloudinary.com/dm2aoqxzy/image/upload/v1741095340/inst-1.png").open
-file2 = URI.parse("https://res.cloudinary.com/dm2aoqxzy/image/upload/v1741095340/inst-2.png").open
-file3 = URI.parse("https://res.cloudinary.com/dm2aoqxzy/image/upload/v1741095340/inst-3.png").open
+puts 'creating instruments'
+def get_photo(instrument)
+  puts "getting photo"
+  search_param = instrument.category.title.downcase
+  search_param = "piano" if instrument.category.title.downcase == "keyboard"
+  photo_url = Unsplash::Photo.search(search_param).sample.urls.full
+   URI.parse(photo_url).open
+end
+
+def attach_photo(instrument, index=0)
+  puts "attaching photo"
+  instrument.photos.attach(io: get_photo(instrument), filename: "#{instrument.title}#{index+1}.png", content_type: "image/png")
+end
 
 10.times do
   puts 'creating an Instrument'
@@ -59,15 +68,10 @@ file3 = URI.parse("https://res.cloudinary.com/dm2aoqxzy/image/upload/v1741095340
     category: Category.all.sample
   )
 
-  puts 'attaching file 1'
+  rand(1..5).times do |index|
+    attach_photo(instrument, index)
+  end
 
-  instrument.photos.attach(io: file1, filename: "inst1.png", content_type: "image/png")
-  puts 'attaching file 2'
-
-  instrument.photos.attach(io: file2, filename: "inst2.png", content_type: "image/png")
-  puts 'attaching file 3'
-
-  instrument.photos.attach(io: file3, filename: "inst3.png", content_type: "image/png")
   puts 'saving...'
   instrument.save!
 end
