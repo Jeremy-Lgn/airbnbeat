@@ -17,6 +17,8 @@ class InstrumentsController < ApplicationController
 
   def show
     @instrument = Instrument.find(params[:id])
+    @feedbacks = Feedback.joins(:booking).where(bookings: { instrument_id: @instrument.id })
+    @average_rating = @feedbacks.average(:rating).to_f
   end
 
   def new
@@ -30,7 +32,7 @@ class InstrumentsController < ApplicationController
     @instrument = Instrument.new(instrument_params)
     @instrument.user = current_user
     @instrument.category = Category.find(params[:instrument][:category_id])
-    
+
     if @instrument.save
       redirect_to @instrument, notice: 'Instrument créé.'
     else
