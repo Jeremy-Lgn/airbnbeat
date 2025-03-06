@@ -1,40 +1,41 @@
-<div>
-<p class="beautiful_txt">Informations complémentaires</p>
+<div class="container">
+  <p class="beautiful_txt">Informations complémentaires</p>
 </div>
 
-<div class="container beautiful-container">
-  <div data-controller="lightbox">
-    <div class="row">
+  <div class="container">
 
-      <div class="col-md-6">
-        <div class="border p-3 m-0">
-          <%= cl_image_tag(@instrument.photos.first.key, width: 600, height: 360, crop: "scale", class: "img-fluid", data: { action: "click->lightbox#open" }) %>
-        </div>
-      </div>
-
-      <div class="col-md-6">
+    <div class="container beautiful-container">
+      <div data-controller="lightbox">
         <div class="row">
-          <% @instrument.photos.each do |photo| %>
-            <div class="col-md-4 mb-3">
-              <div class="border p-3 m-0 h-100">
-                <%= cl_image_tag(photo.key, width: 260, height: 170, crop: "scale", class: "img-fluid", data: { action: "click->lightbox#open" }) %>
-              </div>
+          <div class="col-md-6">
+            <div class="border p-3 m-0">
+              <%= cl_image_tag(@instrument.photos.first.key, width: 600, height: 360, crop: "scale", class: "img-fluid", data: { action: "click->lightbox#open" }) %>
             </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
+          </div>
 
-    <div data-lightbox-target="overlay" data-action="click->lightbox#close" class="lightbox-overlay hidden">
-      <img data-lightbox-target="image" src="" data-action="click->lightbox#stopPropagation" />
-      <button data-action="click->lightbox#close" class="lightbox-close">×</button>
+          <div class="col-md-6">
+            <div class="row">
+              <% @instrument.photos.each do |photo| %>
+                <div class="col-md-4 mb-3">
+                  <div class="border p-3 m-0 h-100">
+                    <%= cl_image_tag(photo.key, width: 260, height: 170, crop: "scale", class: "img-fluid", data: { action: "click->lightbox#open" }) %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div data-lightbox-target="overlay" data-action="click->lightbox#close" class="lightbox-overlay hidden">
+          <img data-lightbox-target="image" src="" data-action="click->lightbox#stopPropagation" />
+          <button data-action="click->lightbox#close" class="lightbox-close">×</button>
+        </div>
     </div>
   </div>
-</div>
 
-  <!-- Calendrier et reservation -->
-    <!-- Description et info proprio -->
-    <div class="border mt-4 p-4">
+
+   <div class="container beautiful-container">
+      <div class="border mt-4 p-4">
         <div class="row">
             <div class="col-md-3 border p-3">
                 <h5><%= @instrument.user.name %></h5>
@@ -54,8 +55,10 @@
             <%= render "bookings/form_booking", instrument: @instrument, booking: @booking %>
           </div>
         </div>
-    </div>
+      </div>
+  </div>
     <!-- Notes -->
+  <div class="container beautiful-container">
     <div class="border mt-4 p-4">
         <h4 class="mb-3"><strong>Avis</strong></h4>
         <% if @feedbacks.present? %>
@@ -78,4 +81,6 @@
             <p>Aucun avis pour le moment.</p>
         <% end %>
     </div>
+  </div>
+
 </div>
