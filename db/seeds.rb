@@ -11,7 +11,7 @@
 require "faker"
 
 puts "cleaning database..."
-
+Feedback.destroy_all
 Booking.destroy_all
 Instrument.destroy_all
 User.destroy_all
@@ -29,11 +29,17 @@ User.create!(email: "tutu@sfr.en", password: "password", name: "tata", address: 
 User.create!(email: "titi@sfr.fr", password: "password", name: "toto", address: "4 rue de la Martinière 69001 Lyon")
 User.create!(email: "toti@sfr.en", password: "password", name: "tata", address: "15 rue Bouteille 69001 Lyon")
 
-
 puts "creating categories"
 Category.create!(title: "Guitar", icon: "🎸")
-Category.create!(title: "drums", icon: "🥁")
-Category.create!(title: "Keyboard", icon: "🎹")
+Category.create!(title: "Drumming", icon: "🥁")
+Category.create!(title: "Piano", icon: "🎹")
+Category.create!(title: "Ukulele", icon: "♪")
+Category.create!(title: "Saxophone", icon: "🎷")
+Category.create!(title: "Keyboard", icon: "🎛️")
+Category.create!(title: "Violin", icon: "🎻")
+Category.create!(title: "Flute", icon: "🪈")
+Category.create!(title: "Trumpet", icon: "🎺")
+Category.create!(title: "Cello", icon: "♭")
 
 
 puts 'creating loops'
@@ -41,7 +47,7 @@ file1 = URI.parse("https://res.cloudinary.com/dm2aoqxzy/image/upload/v1741095340
 file2 = URI.parse("https://res.cloudinary.com/dm2aoqxzy/image/upload/v1741095340/inst-2.png").open
 file3 = URI.parse("https://res.cloudinary.com/dm2aoqxzy/image/upload/v1741095340/inst-3.png").open
 
- 10.times do
+10.times do
   puts 'creating an Instrument'
   instrument = Instrument.new(
     brand: brands.sample,
@@ -67,5 +73,25 @@ file3 = URI.parse("https://res.cloudinary.com/dm2aoqxzy/image/upload/v1741095340
 end
 
 puts 'creating bookings'
-Booking.create!(start_date: Date.new(2025,2,3), end_date: Date.new(2025,2,6), user: toto, instrument: Instrument.all.sample)
-Booking.create!(start_date: Date.new(2025,4,6), end_date: Date.new(2025,5,8), user: toto, instrument: Instrument.all.sample)
+Booking.create!(start_date: Date.new(2025,2,3), end_date: Date.new(2025,2,6), user: User.all.sample, instrument: Instrument.all.sample)
+Booking.create!(start_date: Date.new(2025,4,6), end_date: Date.new(2025,5,8), user: User.all.sample, instrument: Instrument.all.sample)
+Booking.create!(start_date: Date.new(2025,2,3), end_date: Date.new(2025,2,6), user: User.all.sample, instrument: Instrument.all.sample)
+Booking.create!(start_date: Date.new(2025,4,6), end_date: Date.new(2025,5,8), user: User.all.sample, instrument: Instrument.all.sample)
+Booking.create!(start_date: Date.new(2025,6,10), end_date: Date.new(2025,6,15), user: User.all.sample, instrument: Instrument.all.sample)
+
+
+
+
+puts 'Creating feedbacks...'
+bookings = Booking.all
+bookings.each do |booking|
+  1.times do
+    Feedback.create!(
+      comment: Faker::Lorem.paragraph(sentence_count: 3),
+      rating: rand(1..5),
+      booking: booking
+    )
+  end
+end
+
+puts 'done'

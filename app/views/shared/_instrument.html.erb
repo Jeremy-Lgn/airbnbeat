@@ -2,8 +2,8 @@
   <div class="cards-container">
     <% instruments.each do |instrument| %>
       <div class="card-wrapper">
-        <%= link_to instrument_path(instrument), class: "card-link" do %>
-          <div class="instrument-card">
+        <div class="instrument-card position-relative">
+          <%= link_to instrument_path(instrument), class: "card-link" do %>
             <div class="card-image">
               <%= cl_image_tag(instrument.photos.sample.key, crop: "scale") %>
               <% if instrument.created_at > 1.day.ago %>
@@ -15,8 +15,12 @@
               <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= instrument.user.address %></p>
               <div class="card-price"><%= instrument.price_per_day %>€</div>
             </div>
+          <% end %>
+          <div class="sound-icon" data-controller="sound"
+               data-sound-url-value="<%= audio_path("#{instrument.category.title.downcase}.mp3") %>">
+            <i class="fa-solid fa-music" data-action="click->sound#play"></i>
           </div>
-        <% end %>
+        </div>
       </div>
     <% end %>
   </div>

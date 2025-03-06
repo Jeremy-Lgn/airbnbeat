@@ -22,6 +22,7 @@ class InstrumentsController < ApplicationController
   def new
     @instrument = Instrument.new
     @user_name = current_user.name
+    @user_instruments = current_user.instruments # Récupère les instruments de l'utilisateur
   end
 
 
@@ -30,16 +31,13 @@ class InstrumentsController < ApplicationController
     @instrument = Instrument.new(instrument_params)
     @instrument.user = current_user
     @instrument.category = Category.find(params[:instrument][:category_id])
-    
+
     if @instrument.save
       redirect_to @instrument, notice: 'Instrument créé.'
     else
       render :new, status: :unprocessable_entity
     end
   end
-
-
-
 
 
   private
