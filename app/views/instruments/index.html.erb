@@ -14,7 +14,7 @@
 <div class="instruments-map-layout">
   <div id="instruments" class="instrument-section">
     <% if @instruments.any? %>
-      <%= render "instrument", instruments: @instruments %>
+      <%= render "shared/instrument", instruments: @instruments %>
     <% else %>
       <p>Désolé, nous n'avons pas trouvé ton instrument</p>
     <% end %>
