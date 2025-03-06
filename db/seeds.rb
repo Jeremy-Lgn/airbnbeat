@@ -68,7 +68,7 @@ end
     category: Category.all.sample
   )
 
-  3.times do |index|
+  rand(1..5).times do |index|
     attach_photo(instrument, index)
   end
 
