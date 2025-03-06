@@ -29,11 +29,17 @@ User.create!(email: "tutu@sfr.en", password: "password", name: "tata", address: 
 User.create!(email: "titi@sfr.fr", password: "password", name: "toto", address: "4 rue de la Martinière 69001 Lyon")
 User.create!(email: "toti@sfr.en", password: "password", name: "tata", address: "15 rue Bouteille 69001 Lyon")
 
-
 puts "creating categories"
 Category.create!(title: "Guitar", icon: "🎸")
-Category.create!(title: "drums", icon: "🥁")
-Category.create!(title: "Keyboard", icon: "🎹")
+Category.create!(title: "Drumming", icon: "🥁")
+Category.create!(title: "Piano", icon: "🎹")
+Category.create!(title: "Ukulele", icon: "♪")
+Category.create!(title: "Saxophone", icon: "🎷")
+Category.create!(title: "Keyboard", icon: "🎛️")
+Category.create!(title: "Violin", icon: "🎻")
+Category.create!(title: "Flute", icon: "🪈")
+Category.create!(title: "Trumpet", icon: "🎺")
+Category.create!(title: "Cello", icon: "♭")
 
 
 puts 'creating loops'
