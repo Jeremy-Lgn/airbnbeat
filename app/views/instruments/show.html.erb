@@ -1,43 +1,38 @@
-
 <div class="container mt-4">
-    <!--Images -->
+    <!-- Images -->
     <div class="row mb-4">
         <div class="col-md-6">
             <div class="border p-5 text-center">
-              <%= cl_image_tag(@instrument.photos.first.key, width: 600, height: 360, crop: "scale") %>
+                <%= cl_image_tag(@instrument.photos.first.key, width: 600, height: 360, crop: "scale") %>
             </div>
         </div>
         <div class="col-md-6 d-flex flex-wrap">
             <div class="border p-3 m-0">
-              <%= cl_image_tag(@instrument.photos.first.key,
-              width: 260, height: 170, crop: "scale") %>
+                <%= cl_image_tag(@instrument.photos.first.key, width: 260, height: 170, crop: "scale") %>
             </div>
             <div class="border p-3 m-0">
-              <%= cl_image_tag(@instrument.photos.first.key,
-              width: 260, height: 170, crop: "scale") %>
+                <%= cl_image_tag(@instrument.photos.first.key, width: 260, height: 170, crop: "scale") %>
             </div>
             <div class="border p-3 m-0">
-              <%= cl_image_tag(@instrument.photos.first.key,
-              width: 260, height: 170, crop: "scale") %>
+                <%= cl_image_tag(@instrument.photos.first.key, width: 260, height: 170, crop: "scale") %>
             </div>
             <div class="border p-3 m-0">
-              <%= cl_image_tag(@instrument.photos.first.key,
-              width: 260, height: 170, crop: "scale") %>
+                <%= cl_image_tag(@instrument.photos.first.key, width: 260, height: 170, crop: "scale") %>
             </div>
         </div>
     </div>
     <!-- Calendrier et reservation -->
-    <!-- descrition et info proprio -->
+    <!-- Description et info proprio -->
     <div class="border mt-4 p-4">
         <div class="row">
             <div class="col-md-3 border p-3">
-              <h5><%= @instrument.user.name %></h5>
-              <p><%= @instrument.user.address %></p>
+                <h5><%= @instrument.user.name %></h5>
+                <p><%= @instrument.user.address %></p>
             </div>
             <div class="col-md-9">
-                <h5 class="mb-4"><%=@instrument.title %></h5>
-                <p><%=@instrument.description %></p>
-                <p><%=@instrument.price_per_day %>€ / day</p>
+                <h5 class="mb-4"><%= @instrument.title %></h5>
+                <p><%= @instrument.description %></p>
+                <p><%= @instrument.price_per_day %>€ / day</p>
             </div>
         </div>
         <div class="mt-4 d-flex" data-controller="submit-booking toggle">
@@ -49,4 +44,27 @@
           </div>
         </div>
     </div>
-    <!-- notes -->
+    <!-- Notes -->
+    <div class="border mt-4 p-4">
+        <h4 class="mb-3"><strong>Avis</strong></h4>
+        <% if @feedbacks.present? %>
+            <% average_rating = @feedbacks.average(:rating).to_i %>
+            <div class="d-flex">
+                <!-- "Note moyenne" -->
+                <h5 class="mb-0 me-2">Note moyenne:</h5>
+                <!-- "Etoiles" -->
+                <div class="stars me-2">
+                    <%= render "star_rating", rating: average_rating %>
+                </div>
+                <strong><%= average_rating %></strong>
+            </div>
+            <div class="reviews mt-4">
+                <% @feedbacks.each do |feedback| %>
+                    <%= render "review", rating: feedback.rating, review: feedback.comment %>
+                <% end %>
+            </div>
+        <% else %>
+            <p>Aucun avis pour le moment.</p>
+        <% end %>
+    </div>
+</div>
