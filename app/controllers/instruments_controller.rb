@@ -17,6 +17,7 @@ class InstrumentsController < ApplicationController
 
   def show
     @instrument = Instrument.find(params[:id])
+    @booking = Booking.new
     @feedbacks = Feedback.joins(:booking).where(bookings: { instrument_id: @instrument.id })
     @average_rating = @feedbacks.average(:rating).to_f
   end
