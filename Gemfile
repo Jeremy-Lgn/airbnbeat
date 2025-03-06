@@ -55,6 +55,8 @@ gem "faker"
 gem "cloudinary"
 gem "geocoder"
 gem "pg_search"
+#j'installe la gem unsplash pour les photos
+gem "unsplash"
 
 group :development, :test do
   gem "dotenv-rails"
