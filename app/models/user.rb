@@ -6,7 +6,6 @@ class User < ApplicationRecord
 
   has_many :instruments
   has_many :bookings
-  has_many :feedbacks
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 end
