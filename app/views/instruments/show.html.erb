@@ -46,7 +46,7 @@
     <div class="row">
        <div class="subbutton">
     <div class="container" data-submit-booking-target="bookingForm">
-      <button class="btn btn-primary beautifulbtn center_btn" <%= user_signed_in? ? "" : "d-none" %> data-action="click->toggle#fire" data-toggle-target="buttonElement">
+      <button class="btn btn-primary beautifulbtn center_btn <%= user_signed_in? ? "" : "d-none" %>" data-action="click->toggle#fire" data-toggle-target="buttonElement">
         Réserver cet instrument !
       </button>
       <div class="d-none scale_down" data-toggle-target="togglableElement">
