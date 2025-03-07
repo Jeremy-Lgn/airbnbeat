@@ -11,6 +11,12 @@
   </div>
 </div>
 
+  <div class="d-flex justify-content-around px-2 mt-2">
+    <% Category.all.each do |category| %>
+      <%= render "instruments_filters",category:category %>
+    <% end %>
+  </div>
+
 <div class="instruments-map-layout">
   <div id="instruments" class="instrument-section resize_instruments">
     <% if @instruments.any? %>
