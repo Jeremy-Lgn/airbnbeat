@@ -5,7 +5,7 @@
         <div class="instrument-card position-relative">
           <%= link_to instrument_path(instrument), class: "card-link" do %>
             <div class="card-image">
-              <%= cl_image_tag(instrument.photos.sample.key, crop: "scale") %>
+              <%= cl_image_tag(instrument.photos.first.key, crop: "scale") %>
               <% if instrument.created_at > 1.day.ago %>
                 <div class="badge-new">Nouveau</div>
               <% end %>
