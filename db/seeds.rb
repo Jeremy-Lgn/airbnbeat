@@ -100,7 +100,7 @@ instrument_attributes = [
   },
   {brand: "Technics",
   model: "SL-1200MK7",
-  category: Category.find_by(title: "Keyboard"),
+  category: Category.find_by(title: "DJ"),
   },
   {brand: "Stradivarius",
   model: "Messiah",
@@ -139,8 +139,8 @@ instrument_attributes = [
 puts 'creating instruments'
 def get_photo(instrument)
   puts "getting photo"
-  search_param = instrument.category.title.downcase
-  search_param = "piano" if instrument.category.title.downcase == "keyboard"
+  search_param = instrument.category&.title&.downcase
+  search_param = "piano" if instrument.category&.title&.downcase == "keyboard"
   photo_url = Unsplash::Photo.search(search_param).sample.urls.full
   URI.parse(photo_url).open
 end
