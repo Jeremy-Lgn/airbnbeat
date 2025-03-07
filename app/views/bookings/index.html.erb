@@ -16,7 +16,7 @@
           <p><strong>Début de location:</strong> <%= booking.start_date %></p>
           <p><strong>Fin de location:</strong> <%= booking.end_date %></p>
           <p class="card-price"><%= booking.instrument.price_per_day %>€/jour</p>
-          <p>Total: <%= (booking.instrument.price_per_day * 3) + 100 %>€/total</p>
+          <p>Total: <%= ((booking.instrument.price_per_day * 3) + 100).round(2) %>€</p>
         </div>
 
         <!-- Feedback Section -->
@@ -24,40 +24,61 @@
           <% feedback = Feedback.find_by(user_id: current_user.id, booking_id: booking.id) %>
 
           <% if feedback.present? %>
-            <!-- affichage de l'avis si y'en a un -->
-            <div class="feedback">
-              <p><strong>Votre avis:</strong></p>
-              <p>Note: <%= feedback.rating %> / 5</p>
-              <p>Commentaire: <%= feedback.comment %></p>
+            <!-- Affichage de l'avis si il exite -->
+            <div class="row">
+              <div class="col-md-6">
+                <div class="card-info feedback">
+                  <p><strong>Votre avis:</strong></p>
+                  <div class="stars">
+                    <%= render "shared/star_rating", rating: feedback.rating %>
+                  </div>
+
+                  <p class="feedback-comment">
+                    <strong>Commentaire:</strong>
+                    <p><%= feedback.comment %></p>
+                  </p>
+                </div>
+              </div>
             </div>
           <% else %>
             <% if booking.end_date < Date.today %>
-              <!-- peut laisser un avis -->
-              <div class="no-feedback">
-                <p>Vous n'avez pas encore laissé d'avis pour cette réservation.</p>
-                <button class="btn btn-primary" data-action="click->toggle-form#toggle" data-target="form-<%= booking.id %>">Laisser un avis</button>
+              <!-- button qui affiche et cache le formulaire -->
+              <div class="row justify-content-center">
+                <div class="col-md-6">
+                  <div class="no-feedback">
+                    <button class="card-price btn btn-primary mb-5" data-action="toggle-form#toggle" data-target="form-<%= booking.id %>">Laisser un avis</button>
+                  </div>
+                </div>
               </div>
 
-              <!-- formulaire caché -->
-              <div id="form-<%= booking.id %>" class="feedback-form" style="display: none;">
-                <%= form_with model: Feedback.new, url: booking_feedbacks_path(booking), local: true do |f| %>
-                  <div class="form-group">
-                    <%= f.label :rating, "Note (0-5)" %>
-                    <%= f.number_field :rating, min: 0, max: 5, class: "form-control" %>
-                  </div>
+              <!-- Formulaire caché -->
+              <div class="row justify-content-center">
+                <div class="col-md-6">
+                  <div id="form-<%= booking.id %>" class="feedback-form" style="display: none;">
+                    <%= form_with model: Feedback.new, url: booking_feedbacks_path(booking), local: true do |f| %>
+                      <div class="form-group">
+                        <%= f.label :rating, "Note (0-5)" %>
+                        <%= f.number_field :rating, min: 0, max: 5, class: "form-control" %>
+                      </div>
 
-                  <div class="form-group">
-                    <%= f.label :comment, "Votre commentaire" %>
-                    <%= f.text_area :comment, class: "form-control" %>
-                  </div>
+                      <div class="form-group">
+                        <%= f.label :comment, "Votre commentaire" %>
+                        <%= f.text_area :comment, class: "form-control" %>
+                      </div>
 
-                  <%= f.submit "Envoyer l'avis", class: "btn btn-success mt-3" %>
-                <% end %>
+                      <%= f.submit "Envoyer l'avis", class: "card-price btn btn-success mt-3 mb-3" %>
+                    <% end %>
+                  </div>
+                </div>
               </div>
             <% else %>
-              <!-- Message indiquant que la location n'est pas finie -->
-              <div class="no-feedback">
-                <p>Vous ne pouvez pas laisser d'avis tant que la période de location n’est pas terminée.</p>
+              <!-- Message en cas de location non terminé -->
+              <div class="row justify-content-center">
+                <div class="col-md-6">
+                  <div class="no-feedback">
+                    <p>Vous pourrez laisser un avis une fois la location terminée.</p>
+                  </div>
+                </div>
               </div>
             <% end %>
           <% end %>

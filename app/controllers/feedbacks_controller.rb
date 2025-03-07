@@ -16,11 +16,13 @@ class FeedbacksController < ApplicationController
     @feedback.booking_id = @booking.id
 
     if @feedback.save
-      redirect_to @booking, notice: "Votre avis a bien été enregistré."
+      redirect_to bookings_path, notice: "Votre avis a bien été enregistré."
     else
-      render :new
+      redirect_to bookings_path, alert: "Erreur lors de l'enregistrement de votre avis."
     end
   end
+
+
 
   private
 
