@@ -1,2 +1,6 @@
-<h2><%= instrument.title %></h2>
-<p><%= instrument.user.address %></p>
+
+<div class="mapbox-info-marker">
+  <h2><%= instrument.title %></h2>
+  <p><%= instrument.user.address %></p>
+  <%= link_to "Voir les détails", instrument_path(instrument), class: "mapbox-info-link" %>
+</div>

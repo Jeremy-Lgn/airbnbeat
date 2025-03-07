@@ -10,7 +10,9 @@ class InstrumentsController < ApplicationController
         # address is on the user
         lat: inst_geocoded.user.latitude,
         lng: inst_geocoded.user.longitude,
-        info_marker_html: render_to_string(partial: "info_marker", locals: {instrument: inst_geocoded})
+        #Add custom marker
+        info_marker_html: render_to_string(partial: "info_marker", locals: {instrument: inst_geocoded}),
+        marker_html: render_to_string(partial: "marker")
       }
     end
   end
