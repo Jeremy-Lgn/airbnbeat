@@ -32,7 +32,7 @@
   </div>
 
   <div class="container beautiful-container mt-4 height_reservation" data-controller="submit-booking toggle">
-    <div class="row position_row">
+    <div class="row position_row col-8">
       <div class="container mt-2">
         <h5 class="fw-bold"><%= @instrument.title %></h5>
         <p class="fst-italic"><%= @instrument.description %></p>
@@ -43,7 +43,7 @@
         <p class="fst-italic"><%= @instrument.user.address %></p>
       </div>
     </div>
-    <div class="row">
+    <div class="row col-4">
        <div class="subbutton">
     <div class="container" data-submit-booking-target="bookingForm">
       <button class="btn btn-primary beautifulbtn center_btn <%= user_signed_in? ? "" : "d-none" %>" data-action="click->toggle#fire" data-toggle-target="buttonElement">
