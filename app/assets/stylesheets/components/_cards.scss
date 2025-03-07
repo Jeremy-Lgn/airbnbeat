@@ -139,3 +139,17 @@
   color: white;
   font-size: 14px;
 }
+
+#instruments, .instrument-section, .resize_instruments {
+  /* Pour Chrome, Safari, Edge */
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+  overflow-y: scroll !important;
+}
+
+#instruments::-webkit-scrollbar,
+.instrument-section::-webkit-scrollbar,
+.resize_instruments::-webkit-scrollbar {
+  width: 0 !important;
+  display: none !important;
+}
