@@ -17,7 +17,7 @@
           <p><strong>Fin de location:</strong> <%= booking.end_date %></p>
           <p><strong>Prix par jour: </strong><%= booking.instrument.price_per_day %>€</p>
           <p><strong>Total: </strong><%= ((booking.instrument.price_per_day * 3) + 100).round(2) %>€</p>
-          <%= link_to "Voir l'instrument", instrument_path(booking.instrument), class: "text-danger mt-2" %>
+          <%= link_to "Voir l'instrument", instrument_path(booking.instrument), class: "text-warning mt-2" %>
         </div>
 
         <!-- Feedback Section -->
