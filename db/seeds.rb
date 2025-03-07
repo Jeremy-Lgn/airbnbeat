@@ -25,7 +25,7 @@ User.create!(email: "tutu@sfr.en", password: "password", name: "Ursul", address:
 User.create!(email: "titi@sfr.fr", password: "password", name: "Stephanie", address: "4 rue de la Martinière 69001 Lyon")
 User.create!(email: "toti@sfr.en", password: "password", name: "Thomas", address: "15 rue Bouteille 69001 Lyon")
 User.create!(email: "louis@sfr.en", password: "password", name: "Louis", address: "10 Rue de Belfort 69004 Lyon")
-User.create!(email: "roger@sfr.fr", password: "password", name: "Roger", address: "15 Rue de Thou 69001 Lyon")
+User.create!(email: "roger@sfr.fr", password: "password", name: "Roger", address: "8 Rue de Belfort 69004 Lyon")
 User.create!(email: "pascal@sfr.en", password: "password", name: "Pascal", address: "8 Rue Ozanam 69001 Lyon")
 User.create!(email: "fred@sfr.fr", password: "password", name: "Fred", address: "12 Rue Jeanne-Marie-Célu 69004 Lyon")
 User.create!(email: "momo@sfr.en", password: "password", name: "Mohamed", address: "5 Rue Denfert-Rochereau 69004 Lyon")
