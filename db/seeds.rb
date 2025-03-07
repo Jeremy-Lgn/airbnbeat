@@ -18,12 +18,12 @@ User.destroy_all
 Category.destroy_all
 
 puts "creating users"
-toto = User.create!(email: "toto@sfr.fr", password: "password", name: "Toto", address: "22 rue des capucins 69001 Lyon")
-User.create!(email: "tito@sfr.en", password: "password", name: "Tito", address: "1 rue Burdeau 69001 Lyon")
-User.create!(email: "tata@sfr.fr", password: "password", name: "Tata", address: "1 place Louis Pardel 69001 Lyon")
-User.create!(email: "tutu@sfr.en", password: "password", name: "Tutu", address: "9 rue des Augustins 69001 Lyon")
-User.create!(email: "titi@sfr.fr", password: "password", name: "Titi", address: "4 rue de la Martinière 69001 Lyon")
-User.create!(email: "toti@sfr.en", password: "password", name: "Toti", address: "15 rue Bouteille 69001 Lyon")
+toto = User.create!(email: "toto@sfr.fr", password: "password", name: "Bob", address: "22 rue des capucins 69001 Lyon")
+User.create!(email: "tito@sfr.en", password: "password", name: "John", address: "1 rue Burdeau 69001 Lyon")
+User.create!(email: "tata@sfr.fr", password: "password", name: "Emma", address: "1 place Louis Pardel 69001 Lyon")
+User.create!(email: "tutu@sfr.en", password: "password", name: "Ursul", address: "9 rue des Augustins 69001 Lyon")
+User.create!(email: "titi@sfr.fr", password: "password", name: "Stephanie", address: "4 rue de la Martinière 69001 Lyon")
+User.create!(email: "toti@sfr.en", password: "password", name: "Thomas", address: "15 rue Bouteille 69001 Lyon")
 User.create!(email: "louis@sfr.en", password: "password", name: "Louis", address: "10 Rue de Belfort 69004 Lyon")
 User.create!(email: "roger@sfr.fr", password: "password", name: "Roger", address: "15 Rue de Thou 69001 Lyon")
 User.create!(email: "pascal@sfr.en", password: "password", name: "Pascal", address: "8 Rue Ozanam 69001 Lyon")
@@ -42,25 +42,25 @@ User.create!(email: "mathieu@sfr.en", password: "password", name: "Mathieu", add
 
 
 puts "creating categories"
-Category.create!(title: "Guitare", icon: "🎸")
+Category.create!(title: "Guitar", icon: "🎸")
 Category.create!(title: "Drum", icon: "🥁")
 Category.create!(title: "Piano", icon: "🎹")
 Category.create!(title: "Ukulele", icon: "♪")
 Category.create!(title: "Saxophone", icon: "🎷")
-Category.create!(title: "Platine DJ", icon: "🎛️")
-Category.create!(title: "Violon", icon: "🎻")
+Category.create!(title: "DJ", icon: "🎛️")
+Category.create!(title: "Violin", icon: "🎻")
 Category.create!(title: "Flute", icon: "🪈")
-Category.create!(title: "Trompette", icon: "🎺")
-Category.create!(title: "Violoncelle", icon: "♭")
+Category.create!(title: "Trumpet", icon: "🎺")
+Category.create!(title: "Cello", icon: "♭")
 
 instrument_attributes = [
   {brand: "Yamaha",
   model: "FG 800",
-  category: Category.find_by(title: "Guitare"),
+  category: Category.find_by(title: "Guitar"),
   },
   {brand: "Fender",
   model: "Stratocaster",
-  category: Category.find_by(title: "Guitare"),
+  category: Category.find_by(title: "Guitar"),
   },
   {brand: "Gretsch",
   model: "Catalina Club Jazz 18",
@@ -96,19 +96,19 @@ instrument_attributes = [
   },
   {brand: "Pioneer DJ",
   model: "CDJ-3000",
-  category: Category.find_by(title: "Platine DJ"),
+  category: Category.find_by(title: "DJ"),
   },
   {brand: "Technics",
   model: "SL-1200MK7",
-  category: Category.find_by(title: "Platine DJ"),
+  category: Category.find_by(title: "Keyboard"),
   },
   {brand: "Stradivarius",
   model: "Messiah",
-  category: Category.find_by(title: "Violon"),
+  category: Category.find_by(title: "Violin"),
   },
   {brand: "Yamaha",
   model: "YVN500S",
-  category: Category.find_by(title: "Violon"),
+  category: Category.find_by(title: "Violin"),
   },
   {brand: "Yamaha",
   model: "YFL-222",
@@ -120,19 +120,19 @@ instrument_attributes = [
   },
   {brand: "Bach",
   model: "Stradivarius 180S37",
-  category: Category.find_by(title: "Trompette"),
+  category: Category.find_by(title: "Trumpet"),
   },
   {brand: "Yamaha",
   model: "YTR-2330",
-  category: Category.find_by(title: "Trompette"),
+  category: Category.find_by(title: "Trumpet"),
   },
   {brand: "Stradivarius",
   model: "Duport",
-  category: Category.find_by(title: "Violoncelle"),
+  category: Category.find_by(title: "Cello"),
   },
   {brand: "Stentor",
   model: "Conservatoire",
-  category: Category.find_by(title: "Violoncelle"),
+  category: Category.find_by(title: "Cello"),
   },
 ]
 
