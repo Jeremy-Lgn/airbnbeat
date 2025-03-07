@@ -11,7 +11,7 @@
   </div>
 </div>
 
-  <div class="d-flex justify-content-around px-2 mt-2">
+  <div class="d-flex justify-content-around px-2 mt-2 mb-4">
     <% Category.all.each do |category| %>
       <%= render "instruments_filters",category:category %>
     <% end %>
