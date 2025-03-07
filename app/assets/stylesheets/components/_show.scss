@@ -49,7 +49,6 @@
 }
 
 .subbutton {
-margin-top: 90px;
 scale: 1.1;
 }
 
@@ -72,4 +71,15 @@ scale: 1.1;
 .center {
   position: relative;
   top: 120px;
+}
+
+.border {
+  border-radius: 10px;
+}
+
+.success {
+  width: 200px !important;
+  height: 200px !important;
+  position: relative;
+  bottom: -8px;
 }

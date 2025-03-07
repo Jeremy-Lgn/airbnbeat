@@ -8,16 +8,16 @@
     <div data-controller="lightbox">
       <div class="row">
         <div class="col-md-6">
-          <div class="border p-3 m-0">
-            <%= cl_image_tag(@instrument.photos.first.key, width: 600, height: 360, crop: "scale", class: "img-fluid", data: { action: "click->lightbox#open" }) %>
+          <div class="">
+            <%= cl_image_tag(@instrument.photos.first.key, width: 600, height: 360, crop: "pad", class: "img-fluid border", data: { action: "click->lightbox#open" }) %>
           </div>
         </div>
         <div class="col-md-6">
           <div class="row">
             <% @instrument.photos.each do |photo| %>
               <div class="col-md-4 mb-3">
-                <div class="border p-3 m-0 h-100">
-                  <%= cl_image_tag(photo.key, width: 260, height: 170, crop: "scale", class: "img-fluid", data: { action: "click->lightbox#open" }) %>
+                <div class="h-100">
+                  <%= cl_image_tag(photo.key, width: 260, height: 170, crop: "pad", class: "img-fluid border", data: { action: "click->lightbox#open" }) %>
                 </div>
               </div>
             <% end %>
@@ -31,35 +31,40 @@
     </div>
   </div>
 
-  <div class="container beautiful-container mt-4">
-
-      <div class="row">
-        <div class="container mt-2">
-          <h5 class="fw-bold"><%= @instrument.title %></h5>
-          <p class="fst-italic"><%= @instrument.description %></p>
-          <h2 class="fw-bold"><%= @instrument.price_per_day %>€ / day</h2>
-        </div>
-        <div class="container">
-          <h5 class="fw-bold"><%= @instrument.user.name.capitalize %></h5>
-          <p class="fst-italic"><%= @instrument.user.address %></p>
-        </div>
+<div class="container beautiful-container mt-4">
+  <div class="subbutton" data-controller="submit-booking toggle">
+    <div class="container" data-submit-booking-target="bookingForm">
+      <button class="btn btn-primary beautifulbtn" <%= user_signed_in? ? "" : "d-none" %> data-action="click->toggle#fire" data-toggle-target="buttonElement">
+        Réserver cet instrument !
+      </button>
+      <div class="d-none" data-toggle-target="togglableElement">
+        <%= render "bookings/form_booking", instrument: @instrument, booking: @booking %>
       </div>
-      <div class="subbutton" data-controller="submit-booking toggle">
-        <div class="container">
-  <button class="btn btn-primary beautifulbtn <%= user_signed_in? ? "" : "d-none" %>" data-action="click->toggle#fire" data-toggle-target="buttonElement">
-  Réserver cet instrument !
-</button>
+    </div>
 
-<div class="d-none" data-toggle-target="togglableElement">
-  <%= render "bookings/form_booking", instrument: @instrument, booking: @booking %>
-</div>
-
-      </div>
-
+  <div class="alert alert-success d-none text-center py-4 success" data-submit-booking-target="successMessage">
+    <h4 class="mb-0">Réservation effectuée !</h4>
+  </div>
+    </div>
   </div>
 
-  <div class="container beautiful-container mt-4">
 
+  <div class="container beautiful-container mt-4">
+    <div class="row">
+      <div class="container mt-2">
+        <h5 class="fw-bold"><%= @instrument.title %></h5>
+        <p class="fst-italic"><%= @instrument.description %></p>
+        <h2 class="fw-bold"><%= @instrument.price_per_day %>€ / day</h2>
+      </div>
+      <div class="container">
+        <h5 class="fw-bold"><%= @instrument.user.name.capitalize %></h5>
+        <p class="fst-italic"><%= @instrument.user.address %></p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container beautiful-container mt-4 mb-4">
       <div class="row">
       <h4 class="mb-3"><strong>Avis</strong></h4>
       <% if @feedbacks.present? %>
@@ -82,9 +87,4 @@
         <p>Aucun avis pour le moment.</p>
       <% end %>
       </div>
-
   </div>
-
-<div class="container beautiful_txt">
-  DISPONIBLE
-</div>
