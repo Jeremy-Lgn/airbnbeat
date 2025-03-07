@@ -17,30 +17,124 @@ Instrument.destroy_all
 User.destroy_all
 Category.destroy_all
 
-brands =  ["Yamaha", "Fender", "Gibson", "Roland", "Korg", "Casio", "Nord", "Ibanez", "Taylor", "Martin",    "Kawai", "Pearl", "Zildjian", "DW Drums", "Sonor", "Gretsch", "Epiphone", "Schecter", "ESP", "Jackson"]
-models = [ "Yamaha FG800", "Fender Stratocaster", "Ibanez SR", "Roland Digital Keyboard", "Pearl Drum Set", "Stradivarius-Inspired Violin", "Yamaha Alto Saxophone", "Bach Stradivarius Trumpet", "Handcrafted Cello", "Buffet Crampon Clarinet", "Aegean Mandolin", "Deering Banjo", "Casio Electric Piano", "Korg Synthesizer", "Complete Percussion Set", "Pearl Flute", "Hohner Diatonic Harmonica", "Well-Tuned Viola", "Sturdy Double Bass", "Pioneer DJ Controller" ]
-titles = [ "Yamaha FG800 Acoustic Guitar Rental", "Fender Stratocaster Electric Guitar Rental", "Ibanez SR Bass Guitar Rental", "Roland Digital Keyboard Rental", "Pearl Drum Set Rental", "Stradivarius-Inspired Violin Rental", "Yamaha Alto Saxophone Rental", "Bach Stradivarius Trumpet Rental", "Handcrafted Cello Rental", "Buffet Crampon Clarinet Rental", "Aegean Mandolin Rental", "Deering Banjo Rental", "Casio Electric Piano Rental", "Korg Synthesizer Rental", "Complete Percussion Set Rental", "Pearl Flute Rental", "Hohner Diatonic Harmonica Rental", "Well-Tuned Viola Rental", "Sturdy Double Bass Rental", "Pioneer DJ Controller Rental" ]
-
 puts "creating users"
-toto = User.create!(email: "toto@sfr.fr", password: "password", name: "toto", address: "22 rue des capucins 69001 Lyon")
-User.create!(email: "tito@sfr.en", password: "password", name: "tata", address: "1 rue Burdeau 69001 Lyon")
-User.create!(email: "tata@sfr.fr", password: "password", name: "toto", address: "1 place Louis Pardel 69001 Lyon")
-User.create!(email: "tutu@sfr.en", password: "password", name: "tata", address: "9 rue des Augustins 69001 Lyon")
-User.create!(email: "titi@sfr.fr", password: "password", name: "toto", address: "4 rue de la Martinière 69001 Lyon")
-User.create!(email: "toti@sfr.en", password: "password", name: "tata", address: "15 rue Bouteille 69001 Lyon")
+toto = User.create!(email: "toto@sfr.fr", password: "password", name: "Bob", address: "22 rue des capucins 69001 Lyon")
+User.create!(email: "tito@sfr.en", password: "password", name: "John", address: "1 rue Burdeau 69001 Lyon")
+User.create!(email: "tata@sfr.fr", password: "password", name: "Emma", address: "1 place Louis Pardel 69001 Lyon")
+User.create!(email: "tutu@sfr.en", password: "password", name: "Ursul", address: "9 rue des Augustins 69001 Lyon")
+User.create!(email: "titi@sfr.fr", password: "password", name: "Stephanie", address: "4 rue de la Martinière 69001 Lyon")
+User.create!(email: "toti@sfr.en", password: "password", name: "Thomas", address: "15 rue Bouteille 69001 Lyon")
+User.create!(email: "louis@sfr.en", password: "password", name: "Louis", address: "10 Rue de Belfort 69004 Lyon")
+User.create!(email: "roger@sfr.fr", password: "password", name: "Roger", address: "15 Rue de Thou 69001 Lyon")
+User.create!(email: "pascal@sfr.en", password: "password", name: "Pascal", address: "8 Rue Ozanam 69001 Lyon")
+User.create!(email: "fred@sfr.fr", password: "password", name: "Fred", address: "12 Rue Jeanne-Marie-Célu 69004 Lyon")
+User.create!(email: "momo@sfr.en", password: "password", name: "Mohamed", address: "5 Rue Denfert-Rochereau 69004 Lyon")
+User.create!(email: "luc@sfr.en", password: "password", name: "Luc", address: "20 Rue Général-de-Sève 69001 Lyon")
+User.create!(email: "nabil@sfr.fr", password: "password", name: "Nabil", address: "25 Rue Aimé Boussange 69004 Lyon")
+User.create!(email: "antoine@sfr.en", password: "password", name: "Antoine", address: "30 Rue André Bonin 69004 Lyon")
+User.create!(email: "jeremy@sfr.fr", password: "password", name: "Jeremy", address: "35 Rue Artaud 69004 Lyon")
+User.create!(email: "bruno@sfr.en", password: "password", name: "Bruno", address: "40 Rue Audran 69004 Lyon")
+User.create!(email: "david@sfr.en", password: "password", name: "David", address: "45 Rue Barodet 69004 Lyon")
+User.create!(email: "benjamin@sfr.fr", password: "password", name: "Benjamin", address: "50 Rue Bournes 69004 Lyon")
+User.create!(email: "yanis@sfr.en", password: "password", name: "Yanis", address: "55 Rue de Cuire 69004 Lyon")
+User.create!(email: "anthony@sfr.fr", password: "password", name: "Anthony", address: "60 Rue Deleuvre 69004 Lyon")
+User.create!(email: "mathieu@sfr.en", password: "password", name: "Mathieu", address: "65 Rue Duviard 69004 Lyon")
+
 
 puts "creating categories"
 Category.create!(title: "Guitar", icon: "🎸")
-Category.create!(title: "Drumming", icon: "🥁")
+Category.create!(title: "Drum", icon: "🥁")
 Category.create!(title: "Piano", icon: "🎹")
 Category.create!(title: "Ukulele", icon: "♪")
 Category.create!(title: "Saxophone", icon: "🎷")
-Category.create!(title: "Keyboard", icon: "🎛️")
+Category.create!(title: "DJ", icon: "🎛️")
 Category.create!(title: "Violin", icon: "🎻")
 Category.create!(title: "Flute", icon: "🪈")
 Category.create!(title: "Trumpet", icon: "🎺")
 Category.create!(title: "Cello", icon: "♭")
 
+instrument_attributes = [
+  {brand: "Yamaha",
+  model: "FG 800",
+  category: Category.find_by(title: "Guitar"),
+  },
+  {brand: "Fender",
+  model: "Stratocaster",
+  category: Category.find_by(title: "Guitar"),
+  },
+  {brand: "Gretsch",
+  model: "Catalina Club Jazz 18",
+  category: Category.find_by(title: "Drum"),
+  },
+  {brand: "Pearl",
+  model: "Masters Maple",
+  category: Category.find_by(title: "Drum"),
+  },
+  {brand: "Yamaha",
+  model: "U1",
+  category: Category.find_by(title: "Piano"),
+  },
+  {brand: "Steinway & Sons",
+  model: "Steinway Model O",
+  category: Category.find_by(title: "Piano"),
+  },
+  {brand: "Kala",
+  model: "KA-15S",
+  category: Category.find_by(title: "Ukulele"),
+  },
+  {brand: "Kamaka",
+  model: "HF-1",
+  category: Category.find_by(title: "Ukulele"),
+  },
+  {brand: "Selmer",
+  model: "Mark VI",
+  category: Category.find_by(title: "Saxophone"),
+  },
+  {brand: "Yamaha",
+  model: "YAS-280",
+  category: Category.find_by(title: "Saxophone"),
+  },
+  {brand: "Pioneer DJ",
+  model: "CDJ-3000",
+  category: Category.find_by(title: "DJ"),
+  },
+  {brand: "Technics",
+  model: "SL-1200MK7",
+  category: Category.find_by(title: "Keyboard"),
+  },
+  {brand: "Stradivarius",
+  model: "Messiah",
+  category: Category.find_by(title: "Violin"),
+  },
+  {brand: "Yamaha",
+  model: "YVN500S",
+  category: Category.find_by(title: "Violin"),
+  },
+  {brand: "Yamaha",
+  model: "YFL-222",
+  category: Category.find_by(title: "Flute"),
+  },
+  {brand: "Miyazawa",
+  model: "PB-402",
+  category: Category.find_by(title: "Flute"),
+  },
+  {brand: "Bach",
+  model: "Stradivarius 180S37",
+  category: Category.find_by(title: "Trumpet"),
+  },
+  {brand: "Yamaha",
+  model: "YTR-2330",
+  category: Category.find_by(title: "Trumpet"),
+  },
+  {brand: "Stradivarius",
+  model: "Duport",
+  category: Category.find_by(title: "Cello"),
+  },
+  {brand: "Stentor",
+  model: "Conservatoire",
+  category: Category.find_by(title: "Cello"),
+  },
+]
 
 puts 'creating instruments'
 def get_photo(instrument)
@@ -48,7 +142,7 @@ def get_photo(instrument)
   search_param = instrument.category.title.downcase
   search_param = "piano" if instrument.category.title.downcase == "keyboard"
   photo_url = Unsplash::Photo.search(search_param).sample.urls.full
-   URI.parse(photo_url).open
+  URI.parse(photo_url).open
 end
 
 def attach_photo(instrument, index=0)
@@ -56,25 +150,27 @@ def attach_photo(instrument, index=0)
   instrument.photos.attach(io: get_photo(instrument), filename: "#{instrument.title}#{index+1}.png", content_type: "image/png")
 end
 
-10.times do
-  puts 'creating an Instrument'
-  instrument = Instrument.new(
-    brand: brands.sample,
-    description: Faker::Lorem.sentence(word_count: 10),
-    model: models.sample,
-    price_per_day: Faker::Number.decimal(l_digits: 2),
-    title: titles.sample,
-    user: User.all.sample,
-    category: Category.all.sample
-  )
+instrument_attributes.each do |attributes|
+  puts "creating an Instrument"
+  1.times do
+    instrument = Instrument.new(
+      brand: attributes[:brand],
+      description: Faker::Lorem.sentence(word_count: 10),
+      model: attributes[:model],
+      price_per_day: Faker::Number.decimal(l_digits: 2),
+      title: "#{attributes[:brand]} - #{attributes[:model]}",
+      user: User.all.sample,
+      category: attributes[:category]
+      )
 
-  rand(1..5).times do |index|
-    attach_photo(instrument, index)
+      rand(1..5).times do |index|
+        attach_photo(instrument, index)
+      end
+
+      puts 'saving...'
+      instrument.save!
+    end
   end
-
-  puts 'saving...'
-  instrument.save!
-end
 
 puts 'creating bookings'
 Booking.create!(start_date: Date.new(2025,2,3), end_date: Date.new(2025,2,6), user: User.all.sample, instrument: Instrument.all.sample)

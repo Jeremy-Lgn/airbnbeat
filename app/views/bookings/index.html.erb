@@ -1,26 +1,90 @@
 <div class="good_pad">
-<h1 class="title_booking">Mes réservations</h1>
+  <h1 class="title_booking">Mes réservations</h1>
 </div>
+
 <div class="pad_good">
-<% @bookings.each do |booking|  %>
-  <div class="contain">
-    <%= cl_image_tag(booking.instrument.photos.first.key, crop: "scale", class: :beautiful_image) %>
-      <div class="beautiful_text">
-        <p>Début de location:</p>
-        <p><%= booking.start_date %></p>
-        <p>Fin de location:</p>
-        <p><%= booking.end_date %></p>
+  <div class="cards-container">
+    <% @bookings.each do |booking| %>
+      <div class="instrument-card">
+        <div class="card-image">
+          <%= cl_image_tag(booking.instrument.photos.first.key, crop: "scale", class: "card-img") %>
+        </div>
+
+        <div class="card-info">
+          <h2 class="card-title"><%= booking.instrument.title %></h2>
+          <p class="card-location"><%= booking.user.address %></p>
+          <p><strong>Début de location:</strong> <%= booking.start_date %></p>
+          <p><strong>Fin de location:</strong> <%= booking.end_date %></p>
+          <p><strong>Prix par jour: </strong><%= booking.instrument.price_per_day %>€</p>
+          <p><strong>Total: </strong><%= booking.total_price.round(2) %>€</p>
+          <%= link_to "Voir l'instrument", instrument_path(booking.instrument), class: "text-warning mt-2" %>
+        </div>
+
+        <!-- Feedback Section -->
+        <div class="feedback_section" data-controller="toggle-form">
+          <% feedback = Feedback.find_by(booking_id: booking.id) %>
+
+          <% if feedback.present? %>
+            <!-- Affichage de l'avis si il exite -->
+            <div class="row">
+              <div class="col-md-6">
+                <div class="card-info feedback">
+                  <p><strong>Votre avis:</strong></p>
+                  <div class="stars">
+                    <%= render "shared/star_rating", rating: feedback.rating %>
+                  </div>
+
+                  <p class="feedback-comment">
+                    <strong>Commentaire:</strong>
+                    <p><%= feedback.comment %></p>
+                  </p>
+                </div>
+              </div>
+            </div>
+          <% else %>
+            <% if booking.end_date < Date.today %>
+              <!-- button qui affiche et cache le formulaire -->
+              <div class="row justify-content-center">
+                <div class="col-md-6">
+                  <div class="no-feedback">
+                    <button class="card-price btn btn-primary mb-5" data-action="toggle-form#toggle" data-target="form-<%= booking.id %>">Laisser un avis</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Formulaire caché -->
+              <div class="row justify-content-center">
+                <div class="col-md-6">
+                  <div id="form-<%= booking.id %>" class="feedback-form" style="display: none;">
+                    <%= form_with model: Feedback.new, url: booking_feedbacks_path(booking), local: true do |f| %>
+                      <div class="form-group">
+                        <%= f.label :rating, "Note (0-5)" %>
+                        <%= f.number_field :rating, min: 0, max: 5, class: "form-control" %>
+                      </div>
+
+                      <div class="form-group">
+                        <%= f.label :comment, "Votre commentaire" %>
+                        <%= f.text_area :comment, class: "form-control" %>
+                      </div>
+
+                      <%= f.submit "Envoyer l'avis", class: "card-price btn btn-success mt-3 mb-3" %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% else %>
+              <!-- Message en cas de location non terminé -->
+              <div class="row justify-content-center">
+                <div class="col-md-6">
+                  <div class="no-feedback">
+
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
       </div>
-    <div class="beautiful_text">
-      <p><%= booking.instrument.title %></p>
-    </div>
-    <div class="beautiful_text">
-      <p><%= booking.user.address %></p>
-    </div>
-    <div class="beautiful_text">
-      <p><%= booking.instrument.price_per_day %>€/jour</p>
-      <p>Total: <%= (booking.instrument.price_per_day * 3) + 100 %>€/total</p>
-    </div>
-    </div>
-<% end %>
+    <% end %>
+  </div>
 </div>
