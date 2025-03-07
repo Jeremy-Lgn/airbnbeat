@@ -12,6 +12,6 @@ class Category < ApplicationRecord
   private
 
   def sound_default
-    "app/assets/audios/default.mp3"
+    "default.mp3"
   end
 end
