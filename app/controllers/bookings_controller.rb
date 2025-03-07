@@ -4,15 +4,6 @@ class BookingsController < ApplicationController
     @bookings = current_user.bookings
   end
 
-  def show
-    @booking = Booking.find(params[:id])
-  end
-
-  def new
-    @booking = Booking.new
-    @instrument = Instrument.find(params[:instrument_id])
-  end
-
   def create
     @booking = Booking.new(booking_params)
     @instrument = Instrument.find(params[:instrument_id])
@@ -21,7 +12,7 @@ class BookingsController < ApplicationController
 
     respond_to do |format|
       if @booking.save
-        format.html { redirect_to @instrument, notice: "Booking was successfully created." }
+        format.html { redirect_to @instrument, booking_success: true }
       else
         format.html { render "instruments/show", status: :unprocessable_entity }
       end
