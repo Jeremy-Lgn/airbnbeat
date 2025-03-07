@@ -17,21 +17,33 @@ Instrument.destroy_all
 User.destroy_all
 Category.destroy_all
 
-#brands =  ["Yamaha", "Fender", "Gibson", "Roland", "Korg", "Casio", "Nord", "Ibanez", "Taylor", "Martin",    "Kawai", "Pearl", "Zildjian", "DW Drums", "Sonor", "Gretsch", "Epiphone", "Schecter", "ESP", "Jackson"]
-#models = [ "Yamaha FG800", "Fender Stratocaster", "Ibanez SR", "Roland Digital Keyboard", "Pearl Drum Set", "Stradivarius-Inspired Violin", "Yamaha Alto Saxophone", "Bach Stradivarius Trumpet", "Handcrafted Cello", "Buffet Crampon Clarinet", "Aegean Mandolin", "Deering Banjo", "Casio Electric Piano", "Korg Synthesizer", "Complete Percussion Set", "Pearl Flute", "Hohner Diatonic Harmonica", "Well-Tuned Viola", "Sturdy Double Bass", "Pioneer DJ Controller" ]
-#titles = [ "Guitare acoustique - Yamaha FG800", "Guitare électrique - Fender Stratocaster", "Basse - Ibanez SR", "Piano numérique - Roland ", "Batterie - Pearl", "Violon - Stradivarius", "Saxophone - Yamaha Alto", "Trompette - Bach Stradivarius", "Violoncelle - Stradivarius  ", "Clarinette - Buffet Crampon", "Mandoline - Aegean", "Banjo - Deering", "Piano numérique - Casio", "Synthétiseur - Korg", "Set de percussion - Bongo", "Flute - Pearl", "Harmonica - Hohner Diatonic", "Violon - Harley Benton", "Contrebasse - Master Bucur", "Platine DJ - Pioneer" ]
-
 puts "creating users"
-toto = User.create!(email: "toto@sfr.fr", password: "password", name: "toto", address: "22 rue des capucins 69001 Lyon")
-User.create!(email: "tito@sfr.en", password: "password", name: "tata", address: "1 rue Burdeau 69001 Lyon")
-User.create!(email: "tata@sfr.fr", password: "password", name: "toto", address: "1 place Louis Pardel 69001 Lyon")
-User.create!(email: "tutu@sfr.en", password: "password", name: "tata", address: "9 rue des Augustins 69001 Lyon")
-User.create!(email: "titi@sfr.fr", password: "password", name: "toto", address: "4 rue de la Martinière 69001 Lyon")
-User.create!(email: "toti@sfr.en", password: "password", name: "tata", address: "15 rue Bouteille 69001 Lyon")
+toto = User.create!(email: "toto@sfr.fr", password: "password", name: "Toto", address: "22 rue des capucins 69001 Lyon")
+User.create!(email: "tito@sfr.en", password: "password", name: "Tito", address: "1 rue Burdeau 69001 Lyon")
+User.create!(email: "tata@sfr.fr", password: "password", name: "Tata", address: "1 place Louis Pardel 69001 Lyon")
+User.create!(email: "tutu@sfr.en", password: "password", name: "Tutu", address: "9 rue des Augustins 69001 Lyon")
+User.create!(email: "titi@sfr.fr", password: "password", name: "Titi", address: "4 rue de la Martinière 69001 Lyon")
+User.create!(email: "toti@sfr.en", password: "password", name: "Toti", address: "15 rue Bouteille 69001 Lyon")
+User.create!(email: "louis@sfr.en", password: "password", name: "Louis", address: "10 Rue de Belfort 69004 Lyon")
+User.create!(email: "roger@sfr.fr", password: "password", name: "Roger", address: "15 Rue de Thou 69001 Lyon")
+User.create!(email: "pascal@sfr.en", password: "password", name: "Pascal", address: "8 Rue Ozanam 69001 Lyon")
+User.create!(email: "fred@sfr.fr", password: "password", name: "Fred", address: "12 Rue Jeanne-Marie-Célu 69004 Lyon")
+User.create!(email: "momo@sfr.en", password: "password", name: "Mohamed", address: "5 Rue Denfert-Rochereau 69004 Lyon")
+User.create!(email: "luc@sfr.en", password: "password", name: "Luc", address: "20 Rue Général-de-Sève 69001 Lyon")
+User.create!(email: "nabil@sfr.fr", password: "password", name: "Nabil", address: "25 Rue Aimé Boussange 69004 Lyon")
+User.create!(email: "antoine@sfr.en", password: "password", name: "Antoine", address: "30 Rue André Bonin 69004 Lyon")
+User.create!(email: "jeremy@sfr.fr", password: "password", name: "Jeremy", address: "35 Rue Artaud 69004 Lyon")
+User.create!(email: "bruno@sfr.en", password: "password", name: "Bruno", address: "40 Rue Audran 69004 Lyon")
+User.create!(email: "david@sfr.en", password: "password", name: "David", address: "45 Rue Barodet 69004 Lyon")
+User.create!(email: "benjamin@sfr.fr", password: "password", name: "Benjamin", address: "50 Rue Bournes 69004 Lyon")
+User.create!(email: "yanis@sfr.en", password: "password", name: "Yanis", address: "55 Rue de Cuire 69004 Lyon")
+User.create!(email: "anthony@sfr.fr", password: "password", name: "Anthony", address: "60 Rue Deleuvre 69004 Lyon")
+User.create!(email: "mathieu@sfr.en", password: "password", name: "Mathieu", address: "65 Rue Duviard 69004 Lyon")
+
 
 puts "creating categories"
 Category.create!(title: "Guitare", icon: "🎸")
-Category.create!(title: "Batterie", icon: "🥁")
+Category.create!(title: "Drum", icon: "🥁")
 Category.create!(title: "Piano", icon: "🎹")
 Category.create!(title: "Ukulele", icon: "♪")
 Category.create!(title: "Saxophone", icon: "🎷")
@@ -43,13 +55,85 @@ Category.create!(title: "Violoncelle", icon: "♭")
 
 instrument_attributes = [
   {brand: "Yamaha",
-  Model: "FG 800",
+  model: "FG 800",
   category: Category.find_by(title: "Guitare"),
   },
   {brand: "Fender",
-  Model: "Stratocaster",
+  model: "Stratocaster",
   category: Category.find_by(title: "Guitare"),
-  }
+  },
+  {brand: "Gretsch",
+  model: "Catalina Club Jazz 18",
+  category: Category.find_by(title: "Drum"),
+  },
+  {brand: "Pearl",
+  model: "Masters Maple",
+  category: Category.find_by(title: "Drum"),
+  },
+  {brand: "Yamaha",
+  model: "U1",
+  category: Category.find_by(title: "Piano"),
+  },
+  {brand: "Steinway & Sons",
+  model: "Steinway Model O",
+  category: Category.find_by(title: "Piano"),
+  },
+  {brand: "Kala",
+  model: "KA-15S",
+  category: Category.find_by(title: "Ukulele"),
+  },
+  {brand: "Kamaka",
+  model: "HF-1",
+  category: Category.find_by(title: "Ukulele"),
+  },
+  {brand: "Selmer",
+  model: "Mark VI",
+  category: Category.find_by(title: "Saxophone"),
+  },
+  {brand: "Yamaha",
+  model: "YAS-280",
+  category: Category.find_by(title: "Saxophone"),
+  },
+  {brand: "Pioneer DJ",
+  model: "CDJ-3000",
+  category: Category.find_by(title: "Platine DJ"),
+  },
+  {brand: "Technics",
+  model: "SL-1200MK7",
+  category: Category.find_by(title: "Platine DJ"),
+  },
+  {brand: "Stradivarius",
+  model: "Messiah",
+  category: Category.find_by(title: "Violon"),
+  },
+  {brand: "Yamaha",
+  model: "YVN500S",
+  category: Category.find_by(title: "Violon"),
+  },
+  {brand: "Yamaha",
+  model: "YFL-222",
+  category: Category.find_by(title: "Flute"),
+  },
+  {brand: "Miyazawa",
+  model: "PB-402",
+  category: Category.find_by(title: "Flute"),
+  },
+  {brand: "Bach",
+  model: "Stradivarius 180S37",
+  category: Category.find_by(title: "Trompette"),
+  },
+  {brand: "Yamaha",
+  model: "YTR-2330",
+  category: Category.find_by(title: "Trompette"),
+  },
+  {brand: "Stradivarius",
+  model: "Duport",
+  category: Category.find_by(title: "Violoncelle"),
+  },
+  {brand: "Stentor",
+  model: "Conservatoire",
+  category: Category.find_by(title: "Violoncelle"),
+  },
 ]
 
 puts 'creating instruments'
@@ -68,7 +152,7 @@ end
 
 instrument_attributes.each do |attributes|
   puts "creating an Instrument"
-  3.times do
+  1.times do
     instrument = Instrument.new(
       brand: attributes[:brand],
       description: Faker::Lorem.sentence(word_count: 10),
