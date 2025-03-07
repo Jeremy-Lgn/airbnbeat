@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'feedbacks/create'
   devise_for :users
   root to: "instruments#index"
 
